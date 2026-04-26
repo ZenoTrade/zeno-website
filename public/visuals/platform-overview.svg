@@ -1,0 +1,33 @@
+<svg width="1200" height="780" viewBox="0 0 1200 780" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="780" rx="40" fill="#08111E"/>
+  <g opacity="0.6">
+    <circle cx="186" cy="150" r="220" fill="#183C78"/>
+    <circle cx="1048" cy="628" r="260" fill="#0C5D62"/>
+  </g>
+  <rect x="72" y="96" width="1056" height="588" rx="32" fill="url(#panel)" stroke="rgba(164,184,255,0.18)"/>
+  <path d="M180 492C286 492 320 322 430 322C540 322 564 442 674 442C786 442 818 246 940 246" stroke="url(#flow)" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="250" cy="492" r="18" fill="#88A6FF"/>
+  <circle cx="506" cy="362" r="18" fill="#9CB5FF"/>
+  <circle cx="740" cy="422" r="18" fill="#B4C5FF"/>
+  <circle cx="940" cy="246" r="22" fill="#63E3CD"/>
+  <rect x="160" y="176" width="220" height="140" rx="24" fill="#0F1C31" stroke="rgba(164,184,255,0.20)"/>
+  <text x="196" y="226" fill="#98B3E8" font-size="24" font-family="Inter, Arial, sans-serif">SIGNAL SOURCES</text>
+  <text x="196" y="276" fill="#F1F5FE" font-size="48" font-weight="700" font-family="Inter, Arial, sans-serif">Collect</text>
+  <rect x="472" y="476" width="250" height="150" rx="24" fill="#101F36" stroke="rgba(164,184,255,0.20)"/>
+  <text x="510" y="528" fill="#98B3E8" font-size="24" font-family="Inter, Arial, sans-serif">DECISION LAYER</text>
+  <text x="510" y="578" fill="#F1F5FE" font-size="48" font-weight="700" font-family="Inter, Arial, sans-serif">Score</text>
+  <rect x="820" y="146" width="220" height="140" rx="24" fill="#0D252A" stroke="rgba(99,227,205,0.28)"/>
+  <text x="856" y="196" fill="#9FE0D6" font-size="24" font-family="Inter, Arial, sans-serif">EXECUTION</text>
+  <text x="856" y="246" fill="#F3FFFC" font-size="48" font-weight="700" font-family="Inter, Arial, sans-serif">Execute</text>
+  <defs>
+    <linearGradient id="panel" x1="132" y1="96" x2="1084" y2="684" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12223D"/>
+      <stop offset="1" stop-color="#09111E"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="180" y1="492" x2="940" y2="246" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5D78D9" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#8CA8FF"/>
+      <stop offset="1" stop-color="#63E3CD"/>
+    </linearGradient>
+  </defs>
+</svg>

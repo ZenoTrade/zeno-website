@@ -1,0 +1,24 @@
+<svg width="1200" height="780" viewBox="0 0 1200 780" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="780" rx="40" fill="#08111E"/>
+  <rect x="72" y="92" width="1056" height="596" rx="32" fill="url(#surface)" stroke="rgba(164,184,255,0.16)"/>
+  <circle cx="950" cy="160" r="180" fill="#193B74" opacity="0.38"/>
+  <circle cx="248" cy="596" r="220" fill="#114D57" opacity="0.35"/>
+  <rect x="166" y="174" width="868" height="74" rx="18" fill="#0E1A2F" stroke="rgba(164,184,255,0.18)"/>
+  <rect x="166" y="278" width="868" height="74" rx="18" fill="#0D172A" stroke="rgba(164,184,255,0.14)"/>
+  <rect x="166" y="382" width="868" height="74" rx="18" fill="#0C1627" stroke="rgba(164,184,255,0.14)"/>
+  <rect x="166" y="486" width="868" height="74" rx="18" fill="#0B1424" stroke="rgba(164,184,255,0.14)"/>
+  <circle cx="226" cy="211" r="14" fill="#8DA7FF"/>
+  <circle cx="226" cy="315" r="14" fill="#8DA7FF"/>
+  <circle cx="226" cy="419" r="14" fill="#8DA7FF"/>
+  <circle cx="226" cy="523" r="14" fill="#63E3CD"/>
+  <text x="268" y="220" fill="#EEF4FF" font-size="30" font-weight="600" font-family="Inter, Arial, sans-serif">Controlled rollout before broad distribution</text>
+  <text x="268" y="324" fill="#EEF4FF" font-size="30" font-weight="600" font-family="Inter, Arial, sans-serif">Observable scoring and reviewable execution paths</text>
+  <text x="268" y="428" fill="#EEF4FF" font-size="30" font-weight="600" font-family="Inter, Arial, sans-serif">Dry runs, logs, and safeguards built into the workflow</text>
+  <text x="268" y="532" fill="#F3FFFC" font-size="30" font-weight="600" font-family="Inter, Arial, sans-serif">Operational maturity as the release gate</text>
+  <defs>
+    <linearGradient id="surface" x1="72" y1="92" x2="1128" y2="688" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13233E"/>
+      <stop offset="1" stop-color="#09111E"/>
+    </linearGradient>
+  </defs>
+</svg>

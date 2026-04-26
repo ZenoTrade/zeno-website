@@ -7,6 +7,8 @@ describe('createLandingContent', () => {
     expect(content.companyName).toBe('Zeno');
     expect(content.hero.title).toBe('Zeno builds disciplined trading systems for signal-driven markets.');
     expect(content.hero.stats).toHaveLength(3);
+    expect(content.sections.every((section) => section.image.src.startsWith('/visuals/'))).toBe(true);
+    expect(content.sections.every((section) => section.image.width === 1200 && section.image.height === 780)).toBe(true);
     expect(content.sections.map((section) => section.id)).toEqual([
       'what-zeno-does',
       'how-zeno-operates',

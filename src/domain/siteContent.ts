@@ -18,6 +18,13 @@ export interface SiteSection {
   title: string;
   description: string;
   items: SectionItem[];
+  image: {
+    src: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  };
 }
 
 export interface CtaContent {
@@ -58,10 +65,10 @@ export function createLandingContent(): SiteContent {
     sections: [
       {
         id: 'what-zeno-does',
-        eyebrow: 'What Zeno does',
-        title: 'A three-layer system for turning fragmented signals into disciplined execution.',
+        eyebrow: 'Platform overview',
+        title: 'Zeno is building a structured platform for signal intelligence and controlled trade execution.',
         description:
-          'Zeno is being structured around clear product boundaries so that signal ingestion, recommendation logic, and execution can improve without collapsing into one brittle workflow.',
+          'The company is being shaped around clear product boundaries so that signal ingestion, recommendation logic, and execution can mature independently without collapsing into one brittle workflow.',
         items: [
           {
             title: 'Signal Collector',
@@ -75,12 +82,19 @@ export function createLandingContent(): SiteContent {
             title: 'ZenoTrade',
             description: 'Execute approved signals through multiple trading platforms and APIs with a path to both traditional broker connectivity and crypto support.'
           }
-        ]
+        ],
+        image: {
+          src: '/visuals/platform-overview.svg',
+          alt: 'Structured illustration showing signal collection, scoring, and trade execution',
+          caption: 'A clearer view of the operating flow: collect, assess, and execute with control.',
+          width: 1200,
+          height: 780
+        }
       },
       {
         id: 'how-zeno-operates',
-        eyebrow: 'How Zeno operates',
-        title: 'The company is being built to look more like infrastructure than signal hype.',
+        eyebrow: 'Operating model',
+        title: 'The operating model is intentionally closer to infrastructure than signal hype.',
         description:
           'Trust in trading systems is earned through operating discipline. Zeno is intentionally prioritizing structure, visibility, and risk controls before broad commercialization.',
         items: [
@@ -96,12 +110,19 @@ export function createLandingContent(): SiteContent {
             title: 'Execution safeguards',
             description: 'Platform adapters, dry-run support, and replayable logs matter as much as the trading logic itself.'
           }
-        ]
+        ],
+        image: {
+          src: '/visuals/operating-model.svg',
+          alt: 'Illustration of a structured operating model with phased controls and review gates',
+          caption: 'Operational maturity matters before scale, especially in automated trading.',
+          width: 1200,
+          height: 780
+        }
       },
       {
         id: 'why-zeno',
-        eyebrow: 'Why Zeno',
-        title: 'A credible trading company needs both technical depth and operational restraint.',
+        eyebrow: 'Credibility',
+        title: 'A trusted trading company needs both technical depth and visible operational restraint.',
         description:
           'The goal is not to impress with complexity. The goal is to build a reliable trading stack that can be trusted by serious users, partners, and future clients.',
         items: [
@@ -117,12 +138,19 @@ export function createLandingContent(): SiteContent {
             title: 'Built for expansion',
             description: 'The same foundation can support internal trading today and future product, API, and partnership surfaces later.'
           }
-        ]
+        ],
+        image: {
+          src: '/visuals/credibility.svg',
+          alt: 'Abstract market credibility illustration with measured growth and trust markers',
+          caption: 'The public face should feel measured, calm, and institutionally credible.',
+          width: 1200,
+          height: 780
+        }
       },
       {
         id: 'company-focus',
         eyebrow: 'Current focus',
-        title: 'The near-term mission is simple: make the core loop reliable and make the company legible.',
+        title: 'The near-term mission is to make the core loop reliable and the company presentation mature.',
         description:
           'Zeno is still early. The right public posture is a mature explanation of what the company is building, how it thinks about risk, and why the architecture is being shaped carefully from the start.',
         items: [
@@ -138,7 +166,14 @@ export function createLandingContent(): SiteContent {
             title: 'Future product surface',
             description: 'Leave room for product pages, proof points, and commercial paths once the operating model is stronger.'
           }
-        ]
+        ],
+        image: {
+          src: '/visuals/company-focus.svg',
+          alt: 'Illustration of staged company growth built on a structured foundation',
+          caption: 'The first impression should support trust now and future expansion later.',
+          width: 1200,
+          height: 780
+        }
       }
     ],
     cta: {
