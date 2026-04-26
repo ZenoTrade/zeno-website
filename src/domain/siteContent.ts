@@ -1,10 +1,12 @@
 export interface HeroContent {
   eyebrow: string;
   title: string;
+  subline: string;
   description: string;
   primaryAction: string;
   secondaryAction: string;
   stats: Array<{ label: string; value: string }>;
+  trustPoints: string[];
 }
 
 export interface SectionItem {
@@ -12,19 +14,37 @@ export interface SectionItem {
   description: string;
 }
 
-export interface SiteSection {
+export interface VisualAsset {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+export interface FeatureSection {
   id: string;
   eyebrow: string;
   title: string;
   description: string;
   items: SectionItem[];
-  image: {
-    src: string;
-    alt: string;
-    caption: string;
-    width: number;
-    height: number;
-  };
+}
+
+export interface StandardsSection {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  items: SectionItem[];
+  visual: VisualAsset;
+}
+
+export interface RolloutSection {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  checkpoints: string[];
+  visual: VisualAsset;
 }
 
 export interface CtaContent {
@@ -41,7 +61,9 @@ export interface FooterContent {
 export interface SiteContent {
   companyName: string;
   hero: HeroContent;
-  sections: SiteSection[];
+  platform: FeatureSection;
+  standards: StandardsSection;
+  rollout: RolloutSection;
   cta: CtaContent;
   footer: FooterContent;
 }
@@ -51,140 +73,94 @@ export function createLandingContent(): SiteContent {
     companyName: 'Zeno',
     hero: {
       eyebrow: 'Signal intelligence and execution infrastructure',
-      title: 'Zeno builds disciplined trading systems for signal-driven markets.',
+      title: 'Zeno is building disciplined trading infrastructure for modern markets.',
+      subline: 'A clearer company introduction for a platform focused on signal quality, controlled execution, and long-term trust.',
       description:
-        'We are developing a focused trading infrastructure company around three core capabilities: signal collection, confidence-aware recommendation, and controlled multi-platform execution. Our approach is systematic, risk-aware, and designed to mature from internal trading operations into trusted external products.',
-      primaryAction: 'Explore the platform',
-      secondaryAction: 'Read our approach',
+        'We are building a focused trading infrastructure company around signal collection, recommendation quality, and multi-platform execution. The goal is simple: reliable systems, measured expansion, and a public posture that feels credible from the start.',
+      primaryAction: 'See the platform',
+      secondaryAction: 'How we operate',
       stats: [
-        { label: 'Core model', value: 'Collect → Score → Execute' },
-        { label: 'Markets', value: 'Broker platforms and crypto venues' },
-        { label: 'Operating principle', value: 'Reliability before scale' }
+        { label: 'Core flow', value: 'Collect → Score → Execute' },
+        { label: 'Coverage', value: 'Broker and crypto execution paths' },
+        { label: 'Priority', value: 'Reliability before scale' }
+      ],
+      trustPoints: ['Structured architecture', 'Risk-aware execution', 'Measured company growth']
+    },
+    platform: {
+      id: 'platform',
+      eyebrow: 'Platform',
+      title: 'One platform, three clear responsibilities.',
+      description:
+        'The platform is intentionally split into distinct layers so collection, decision-making, and execution can improve without becoming one fragile system.',
+      items: [
+        {
+          title: 'Signal collection',
+          description: 'Normalize inputs from approved channels, websites, and future integrations into a cleaner operating flow.'
+        },
+        {
+          title: 'Recommendation quality',
+          description: 'Score signal quality, improve clarity, and support more disciplined trade decisions.'
+        },
+        {
+          title: 'Execution control',
+          description: 'Route approved actions into broker and crypto venues through controlled, reviewable adapters.'
+        }
       ]
     },
-    sections: [
-      {
-        id: 'what-zeno-does',
-        eyebrow: 'Platform overview',
-        title: 'Zeno is building a structured platform for signal intelligence and controlled trade execution.',
-        description:
-          'The company is being shaped around clear product boundaries so that signal ingestion, recommendation logic, and execution can mature independently without collapsing into one brittle workflow.',
-        items: [
-          {
-            title: 'Signal Collector',
-            description: 'Ingest and normalize signals from approved sources including Telegram, Discord, websites, APIs, and future connectors.'
-          },
-          {
-            title: 'Recommender',
-            description: 'Evaluate signal quality, estimate confidence, and improve decision structure with clearer SL/TP guidance and transparent logic.'
-          },
-          {
-            title: 'ZenoTrade',
-            description: 'Execute approved signals through multiple trading platforms and APIs with a path to both traditional broker connectivity and crypto support.'
-          }
-        ],
-        image: {
-          src: '/visuals/platform-overview.svg',
-          alt: 'Structured illustration showing signal collection, scoring, and trade execution',
-          caption: 'A clearer view of the operating flow: collect, assess, and execute with control.',
-          width: 1200,
-          height: 780
-        }
-      },
-      {
-        id: 'how-zeno-operates',
-        eyebrow: 'Operating model',
-        title: 'The operating model is intentionally closer to infrastructure than signal hype.',
-        description:
-          'Trust in trading systems is earned through operating discipline. Zeno is intentionally prioritizing structure, visibility, and risk controls before broad commercialization.',
-        items: [
-          {
-            title: 'Controlled rollout',
-            description: 'The system is intended to prove itself internally before supporting broader external usage.'
-          },
-          {
-            title: 'Observable decisions',
-            description: 'Signals, confidence, and execution paths should be reviewable rather than hidden behind message forwarding.'
-          },
-          {
-            title: 'Execution safeguards',
-            description: 'Platform adapters, dry-run support, and replayable logs matter as much as the trading logic itself.'
-          }
-        ],
-        image: {
-          src: '/visuals/operating-model.svg',
-          alt: 'Illustration of a structured operating model with phased controls and review gates',
-          caption: 'Operational maturity matters before scale, especially in automated trading.',
-          width: 1200,
-          height: 780
-        }
-      },
-      {
-        id: 'why-zeno',
-        eyebrow: 'Credibility',
-        title: 'A trusted trading company needs both technical depth and visible operational restraint.',
-        description:
-          'The goal is not to impress with complexity. The goal is to build a reliable trading stack that can be trusted by serious users, partners, and future clients.',
-        items: [
-          {
-            title: 'Measured product strategy',
-            description: 'Zeno is separating collection, recommendation, and execution so each layer can evolve with less operational risk.'
-          },
-          {
-            title: 'Trust through system design',
-            description: 'Confidence scoring, execution controls, and structured logs create a stronger basis for trust than marketing claims.'
-          },
-          {
-            title: 'Built for expansion',
-            description: 'The same foundation can support internal trading today and future product, API, and partnership surfaces later.'
-          }
-        ],
-        image: {
-          src: '/visuals/credibility.svg',
-          alt: 'Abstract market credibility illustration with measured growth and trust markers',
-          caption: 'The public face should feel measured, calm, and institutionally credible.',
-          width: 1200,
-          height: 780
-        }
-      },
-      {
-        id: 'company-focus',
-        eyebrow: 'Current focus',
-        title: 'The near-term mission is to make the core loop reliable and the company presentation mature.',
-        description:
-          'Zeno is still early. The right public posture is a mature explanation of what the company is building, how it thinks about risk, and why the architecture is being shaped carefully from the start.',
-        items: [
-          {
-            title: 'Company clarity',
-            description: 'Present Zeno as a serious trading infrastructure company rather than a prototype or internal note.'
-          },
-          {
-            title: 'Execution maturity',
-            description: 'Prepare the platform to support broker and crypto execution with clear boundaries and controlled growth.'
-          },
-          {
-            title: 'Future product surface',
-            description: 'Leave room for product pages, proof points, and commercial paths once the operating model is stronger.'
-          }
-        ],
-        image: {
-          src: '/visuals/company-focus.svg',
-          alt: 'Illustration of staged company growth built on a structured foundation',
-          caption: 'The first impression should support trust now and future expansion later.',
-          width: 1200,
-          height: 780
-        }
-      }
-    ],
-    cta: {
-      title: 'A serious company introduction should feel calm, clear, and technically credible.',
+    standards: {
+      id: 'standards',
+      eyebrow: 'Standards',
+      title: 'Trust comes from operating discipline, not marketing noise.',
       description:
-        'This homepage establishes a more mature public face for Zeno now while leaving a clean foundation for future products, proof points, and partnerships.',
+        'Zeno is being shaped to look and behave like infrastructure: observable decisions, controlled rollout, and systems that can be evaluated on quality rather than promotion.',
+      items: [
+        {
+          title: 'Observable decisions',
+          description: 'Signals, scoring, and execution paths should be understandable and reviewable.'
+        },
+        {
+          title: 'Execution safeguards',
+          description: 'Dry-run capability, controlled adapters, and replayable logs matter as much as strategy logic.'
+        },
+        {
+          title: 'Commercial restraint',
+          description: 'The company should prove reliability internally before expanding its external surface.'
+        }
+      ],
+      visual: {
+        src: '/visuals/credibility.svg',
+        alt: 'Abstract market credibility illustration with measured growth and trust markers',
+        width: 1200,
+        height: 780
+      }
+    },
+    rollout: {
+      id: 'company',
+      eyebrow: 'Company',
+      title: 'The rollout is deliberate: strengthen the operating core, then expand the surface area.',
+      description:
+        'The immediate goal is not to say everything. It is to present Zeno clearly, prove the operating model, and leave room for stronger product and partnership stories later.',
+      checkpoints: [
+        'Present a clear and credible company story',
+        'Stabilize the core collection-to-execution loop',
+        'Expand product surfaces only when the foundation deserves it'
+      ],
+      visual: {
+        src: '/visuals/company-focus.svg',
+        alt: 'Illustration of staged company growth built on a structured foundation',
+        width: 1200,
+        height: 780
+      }
+    },
+    cta: {
+      title: 'A professional landing page should explain the company quickly and leave a strong impression.',
+      description:
+        'This version is intentionally simpler: less repetition, less text, and a more standard company flow.',
       primaryAction: 'Back to top'
     },
     footer: {
       tagline: 'Zeno — signal intelligence and execution infrastructure built for disciplined growth.',
-      links: ['Company', 'Platform', 'Approach']
+      links: ['Platform', 'Standards', 'Company']
     }
   };
 }

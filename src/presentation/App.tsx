@@ -1,6 +1,5 @@
 import { createLandingContent } from '../domain/siteContent';
 import { HeroVisual } from './components/HeroVisual';
-import { Section } from './components/Section';
 
 const content = createLandingContent();
 
@@ -10,29 +9,29 @@ export function App() {
       <header className="topbar">
         <strong className="topbar__brand">{content.companyName}</strong>
         <nav className="topbar__nav" aria-label="Primary navigation">
-          <a href="#what-zeno-does">Platform</a>
-          <a href="#how-zeno-operates">Approach</a>
-          <a href="#company-focus">Focus</a>
+          <a href="#platform">Platform</a>
+          <a href="#standards">Standards</a>
+          <a href="#company">Company</a>
         </nav>
-        <a href="#cta-title" className="topbar__cta">Company overview</a>
+        <a href="#company-intro" className="topbar__cta">Company overview</a>
       </header>
 
-      <section className="hero">
+      <section className="hero" aria-labelledby="company-intro">
         <div className="hero__copy">
           <p className="eyebrow">{content.hero.eyebrow}</p>
-          <h1>{content.hero.title}</h1>
-          <p className="hero__subline">Designed for disciplined market participation, measured product growth, and trust built through system quality.</p>
+          <h1 id="company-intro">{content.hero.title}</h1>
+          <p className="hero__subline">{content.hero.subline}</p>
           <p className="hero__description">{content.hero.description}</p>
           <div className="hero__trustband" aria-label="Zeno company qualities">
-            <span>Structured architecture</span>
-            <span>Risk-aware execution</span>
-            <span>Built for credible growth</span>
+            {content.hero.trustPoints.map((point) => (
+              <span key={point}>{point}</span>
+            ))}
           </div>
           <div className="hero__actions" aria-label="Primary website actions">
-            <a href="#what-zeno-does" className="button button--primary">
+            <a href="#platform" className="button button--primary">
               {content.hero.primaryAction}
             </a>
-            <a href="#how-zeno-operates" className="button button--secondary">
+            <a href="#standards" className="button button--secondary">
               {content.hero.secondaryAction}
             </a>
           </div>
@@ -41,21 +40,87 @@ export function App() {
         <div className="hero__panel" aria-label="Zeno operating priorities">
           <HeroVisual />
           <div className="hero__note">
-            <span className="hero__note-label">Positioning</span>
-            <p>Built to present Zeno as a serious company from day one — not just an internal engineering artifact.</p>
+            <span className="hero__note-label">Company posture</span>
+            <p>Built to feel like a credible company introduction, not an internal project page.</p>
           </div>
-          {content.hero.stats.map((stat) => (
-            <div key={stat.label} className="stat-card">
-              <span className="stat-card__label">{stat.label}</span>
-              <strong className="stat-card__value">{stat.value}</strong>
-            </div>
+          <div className="hero__stats">
+            {content.hero.stats.map((stat) => (
+              <div key={stat.label} className="stat-card">
+                <span className="stat-card__label">{stat.label}</span>
+                <strong className="stat-card__value">{stat.value}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id={content.platform.id} className="section-block section-block--platform" aria-labelledby="platform-title">
+        <div className="section-block__header">
+          <p className="eyebrow">{content.platform.eyebrow}</p>
+          <h2 id="platform-title">{content.platform.title}</h2>
+          <p>{content.platform.description}</p>
+        </div>
+        <div className="feature-grid">
+          {content.platform.items.map((item) => (
+            <article key={item.title} className="feature-card">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      {content.sections.map((section) => (
-        <Section key={section.id} section={section} />
-      ))}
+      <section id={content.standards.id} className="section-block section-block--split" aria-labelledby="standards-title">
+        <div className="section-block__header">
+          <p className="eyebrow">{content.standards.eyebrow}</p>
+          <h2 id="standards-title">{content.standards.title}</h2>
+          <p>{content.standards.description}</p>
+          <div className="standards-list">
+            {content.standards.items.map((item) => (
+              <article key={item.title} className="standard-row">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <figure className="section-visual section-visual--tall">
+          <img
+            src={content.standards.visual.src}
+            alt={content.standards.visual.alt}
+            width={content.standards.visual.width}
+            height={content.standards.visual.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </section>
+
+      <section id={content.rollout.id} className="section-block section-block--company" aria-labelledby="company-title">
+        <div className="company-panel">
+          <figure className="section-visual company-panel__visual">
+            <img
+              src={content.rollout.visual.src}
+              alt={content.rollout.visual.alt}
+              width={content.rollout.visual.width}
+              height={content.rollout.visual.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div className="company-panel__content">
+            <p className="eyebrow">{content.rollout.eyebrow}</p>
+            <h2 id="company-title">{content.rollout.title}</h2>
+            <p>{content.rollout.description}</p>
+            <ul className="checkpoint-list">
+              {content.rollout.checkpoints.map((checkpoint) => (
+                <li key={checkpoint}>{checkpoint}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <section className="cta" aria-labelledby="cta-title">
         <div>

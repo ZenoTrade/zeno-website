@@ -2,63 +2,45 @@ import { render, screen } from '@testing-library/react';
 import { App } from './App';
 
 describe('App', () => {
-  it('renders the modern homepage sections and calls to action', () => {
+  it('renders a simpler professional landing flow', () => {
     render(<App />);
 
     expect(
       screen.getByRole('heading', {
-        name: 'Zeno builds disciplined trading systems for signal-driven markets.'
+        name: 'Zeno is building disciplined trading infrastructure for modern markets.'
       })
     ).toBeInTheDocument();
 
-    expect(
-      screen.getByRole('link', {
-        name: 'Explore the platform'
-      })
-    ).toHaveAttribute('href', '#what-zeno-does');
-
-    expect(
-      screen.getByRole('link', {
-        name: 'Read our approach'
-      })
-    ).toHaveAttribute('href', '#how-zeno-operates');
-
-    expect(
-      screen.getByRole('heading', {
-        name: 'Zeno is building a structured platform for signal intelligence and controlled trade execution.'
-      })
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('heading', {
-        name: 'The operating model is intentionally closer to infrastructure than signal hype.'
-      })
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('heading', {
-        name: 'A trusted trading company needs both technical depth and visible operational restraint.'
-      })
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('heading', {
-        name: 'The near-term mission is to make the core loop reliable and the company presentation mature.'
-      })
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('heading', {
-        name: 'A serious company introduction should feel calm, clear, and technically credible.'
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByText('Zeno — signal intelligence and execution infrastructure built for disciplined growth.')).toBeInTheDocument();
-    expect(screen.getByText('Execution map')).toBeInTheDocument();
     expect(screen.getByRole('navigation', { name: 'Primary navigation' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Company overview' })).toHaveAttribute('href', '#cta-title');
-    expect(screen.getByText('Designed for disciplined market participation, measured product growth, and trust built through system quality.')).toBeInTheDocument();
-    expect(screen.getAllByRole('img')).not.toHaveLength(0);
+    expect(screen.getByRole('link', { name: 'Company overview' })).toHaveAttribute('href', '#company-intro');
+    expect(screen.getByRole('link', { name: 'See the platform' })).toHaveAttribute('href', '#platform');
+    expect(screen.getByRole('link', { name: 'How we operate' })).toHaveAttribute('href', '#standards');
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'One platform, three clear responsibilities.'
+      })
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'Trust comes from operating discipline, not marketing noise.'
+      })
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'The rollout is deliberate: strengthen the operating core, then expand the surface area.'
+      })
+    ).toBeInTheDocument();
+
+    expect(screen.getByText('A clearer company introduction for a platform focused on signal quality, controlled execution, and long-term trust.')).toBeInTheDocument();
+    expect(screen.getByText('Structured architecture')).toBeInTheDocument();
+    expect(screen.getByText('Execution map')).toBeInTheDocument();
+    expect(screen.getByText('Signal collection')).toBeInTheDocument();
+    expect(screen.getByText('Observable decisions')).toBeInTheDocument();
+    expect(screen.getByText('Present a clear and credible company story')).toBeInTheDocument();
+
     expect(screen.getAllByRole('img').filter((image) => image.getAttribute('loading') === 'lazy').length).toBeGreaterThan(0);
     expect(screen.getAllByRole('img').filter((image) => image.getAttribute('width') === '1200' && image.getAttribute('height') === '780').length).toBeGreaterThan(0);
   });
