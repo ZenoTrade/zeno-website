@@ -72,63 +72,63 @@ export function createLandingContent(): SiteContent {
   return {
     companyName: 'Zeno',
     hero: {
-      eyebrow: 'Signal intelligence and execution infrastructure',
-      title: 'Zeno is building disciplined trading infrastructure for modern markets.',
-      subline: 'A clearer company introduction for a platform focused on signal quality, controlled execution, and long-term trust.',
+      eyebrow: 'Trading infrastructure',
+      title: 'Signal in. Execution out.',
+      subline: 'Built for disciplined trading teams.',
       description:
-        'We are building a focused trading infrastructure company around signal collection, recommendation quality, and multi-platform execution. The goal is simple: reliable systems, measured expansion, and a public posture that feels credible from the start.',
+        'Zeno is building the infrastructure behind cleaner signal intake, stronger decision quality, and controlled multi-platform execution.',
       primaryAction: 'See the platform',
       secondaryAction: 'How we operate',
       stats: [
         { label: 'Core flow', value: 'Collect → Score → Execute' },
-        { label: 'Coverage', value: 'Broker and crypto execution paths' },
+        { label: 'Coverage', value: 'Broker and crypto execution' },
         { label: 'Priority', value: 'Reliability before scale' }
       ],
-      trustPoints: ['Structured architecture', 'Risk-aware execution', 'Measured company growth']
+      trustPoints: ['Structured architecture', 'Risk-aware execution', 'Measured growth']
     },
     platform: {
       id: 'platform',
       eyebrow: 'Platform',
-      title: 'One platform, three clear responsibilities.',
+      title: 'Three layers. One disciplined system.',
       description:
-        'The platform is intentionally split into distinct layers so collection, decision-making, and execution can improve without becoming one fragile system.',
+        'The platform is split into clear responsibilities so signal intake, decision logic, and execution can improve without creating one fragile workflow.',
       items: [
         {
           title: 'Signal collection',
-          description: 'Normalize inputs from approved channels, websites, and future integrations into a cleaner operating flow.'
+          description: 'Bring approved sources into one cleaner operating flow.'
         },
         {
           title: 'Recommendation quality',
-          description: 'Score signal quality, improve clarity, and support more disciplined trade decisions.'
+          description: 'Score signals and improve decision clarity before action.'
         },
         {
           title: 'Execution control',
-          description: 'Route approved actions into broker and crypto venues through controlled, reviewable adapters.'
+          description: 'Route approved actions through controlled broker and crypto adapters.'
         }
       ]
     },
     standards: {
       id: 'standards',
       eyebrow: 'Standards',
-      title: 'Trust comes from operating discipline, not marketing noise.',
+      title: 'Trust is built through operating discipline.',
       description:
-        'Zeno is being shaped to look and behave like infrastructure: observable decisions, controlled rollout, and systems that can be evaluated on quality rather than promotion.',
+        'Zeno is being shaped to behave like infrastructure: observable decisions, controlled rollout, and systems judged by quality instead of noise.',
       items: [
         {
           title: 'Observable decisions',
-          description: 'Signals, scoring, and execution paths should be understandable and reviewable.'
+          description: 'Signals, scoring, and execution paths should be reviewable.'
         },
         {
           title: 'Execution safeguards',
-          description: 'Dry-run capability, controlled adapters, and replayable logs matter as much as strategy logic.'
+          description: 'Dry runs, adapters, and logs matter as much as strategy logic.'
         },
         {
           title: 'Commercial restraint',
-          description: 'The company should prove reliability internally before expanding its external surface.'
+          description: 'Expansion should follow proof, not pressure.'
         }
       ],
       visual: {
-        src: '/visuals/credibility.svg',
+        src: 'visuals/credibility.svg',
         alt: 'Abstract market credibility illustration with measured growth and trust markers',
         width: 1200,
         height: 780
@@ -137,29 +137,29 @@ export function createLandingContent(): SiteContent {
     rollout: {
       id: 'company',
       eyebrow: 'Company',
-      title: 'The rollout is deliberate: strengthen the operating core, then expand the surface area.',
+      title: 'Strengthen the core. Then expand.',
       description:
-        'The immediate goal is not to say everything. It is to present Zeno clearly, prove the operating model, and leave room for stronger product and partnership stories later.',
+        'The near-term goal is clear: present Zeno well, prove the operating model, and expand the surface only when the foundation is ready.',
       checkpoints: [
-        'Present a clear and credible company story',
-        'Stabilize the core collection-to-execution loop',
-        'Expand product surfaces only when the foundation deserves it'
+        'Present a credible company story',
+        'Stabilize the collection-to-execution loop',
+        'Expand product surfaces when the foundation is ready'
       ],
       visual: {
-        src: '/visuals/company-focus.svg',
+        src: 'visuals/company-focus.svg',
         alt: 'Illustration of staged company growth built on a structured foundation',
         width: 1200,
         height: 780
       }
     },
     cta: {
-      title: 'A professional landing page should explain the company quickly and leave a strong impression.',
+      title: 'A company landing page should be clear, sharp, and credible.',
       description:
-        'This version is intentionally simpler: less repetition, less text, and a more standard company flow.',
+        'This version cuts the noise and focuses on the parts that build trust fastest.',
       primaryAction: 'Back to top'
     },
     footer: {
-      tagline: 'Zeno — signal intelligence and execution infrastructure built for disciplined growth.',
+      tagline: 'Zeno — signal intelligence and execution infrastructure for disciplined growth.',
       links: ['Platform', 'Standards', 'Company']
     }
   };
