@@ -2,12 +2,12 @@ import { render, screen } from '@testing-library/react';
 import { App } from './App';
 
 describe('App', () => {
-  it('renders a simpler professional landing flow', () => {
+  it('renders a sharper professional landing flow', () => {
     render(<App />);
 
     expect(
       screen.getByRole('heading', {
-        name: 'Zeno is building disciplined trading infrastructure for modern markets.'
+        name: 'Signal in. Execution out.'
       })
     ).toBeInTheDocument();
 
@@ -18,30 +18,32 @@ describe('App', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: 'One platform, three clear responsibilities.'
+        name: 'Three layers. One disciplined system.'
       })
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: 'Trust comes from operating discipline, not marketing noise.'
+        name: 'Trust is built through operating discipline.'
       })
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: 'The rollout is deliberate: strengthen the operating core, then expand the surface area.'
+        name: 'Strengthen the core. Then expand.'
       })
     ).toBeInTheDocument();
 
-    expect(screen.getByText('A clearer company introduction for a platform focused on signal quality, controlled execution, and long-term trust.')).toBeInTheDocument();
-    expect(screen.getByText('Structured architecture')).toBeInTheDocument();
+    expect(screen.getByText('Built for disciplined trading teams.')).toBeInTheDocument();
+    expect(screen.getByText('Measured growth')).toBeInTheDocument();
     expect(screen.getByText('Execution map')).toBeInTheDocument();
     expect(screen.getByText('Signal collection')).toBeInTheDocument();
     expect(screen.getByText('Observable decisions')).toBeInTheDocument();
-    expect(screen.getByText('Present a clear and credible company story')).toBeInTheDocument();
+    expect(screen.getByText('Present a credible company story')).toBeInTheDocument();
 
-    expect(screen.getAllByRole('img').filter((image) => image.getAttribute('loading') === 'lazy').length).toBeGreaterThan(0);
-    expect(screen.getAllByRole('img').filter((image) => image.getAttribute('width') === '1200' && image.getAttribute('height') === '780').length).toBeGreaterThan(0);
+    const lazyImages = screen.getAllByRole('img').filter((image) => image.getAttribute('loading') === 'lazy');
+    expect(lazyImages.length).toBeGreaterThan(0);
+    expect(lazyImages.filter((image) => image.getAttribute('src')?.includes('visuals/')).length).toBeGreaterThan(0);
+    expect(lazyImages.filter((image) => image.getAttribute('width') === '1200' && image.getAttribute('height') === '780').length).toBeGreaterThan(0);
   });
 });
