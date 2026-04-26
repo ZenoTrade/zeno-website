@@ -1,4 +1,5 @@
 import { createLandingContent } from '../domain/siteContent';
+import { HeroVisual } from './components/HeroVisual';
 import { Section } from './components/Section';
 
 const content = createLandingContent();
@@ -6,6 +7,15 @@ const content = createLandingContent();
 export function App() {
   return (
     <main className="page-shell">
+      <header className="topbar">
+        <strong className="topbar__brand">{content.companyName}</strong>
+        <nav className="topbar__nav" aria-label="Primary navigation">
+          <a href="#what-zeno-does">Platform</a>
+          <a href="#how-zeno-operates">Approach</a>
+          <a href="#company-focus">Focus</a>
+        </nav>
+      </header>
+
       <section className="hero">
         <div className="hero__copy">
           <p className="eyebrow">{content.hero.eyebrow}</p>
@@ -22,6 +32,7 @@ export function App() {
         </div>
 
         <div className="hero__panel" aria-label="Zeno operating priorities">
+          <HeroVisual />
           {content.hero.stats.map((stat) => (
             <div key={stat.label} className="stat-card">
               <span className="stat-card__label">{stat.label}</span>
@@ -37,7 +48,7 @@ export function App() {
 
       <section className="cta" aria-labelledby="cta-title">
         <div>
-          <p className="eyebrow">Call to action</p>
+          <p className="eyebrow">Company introduction</p>
           <h2 id="cta-title">{content.cta.title}</h2>
           <p>{content.cta.description}</p>
         </div>

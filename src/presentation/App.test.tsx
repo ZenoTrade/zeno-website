@@ -7,46 +7,48 @@ describe('App', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: 'A modern front door for Zeno’s trading stack.'
+        name: 'Zeno builds disciplined trading systems for signal-driven markets.'
       })
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole('link', {
-        name: 'See what Zeno does'
+        name: 'Explore the platform'
       })
     ).toHaveAttribute('href', '#what-zeno-does');
 
     expect(
       screen.getByRole('heading', {
-        name: 'The current website undersells the seriousness of the work.'
+        name: 'A three-layer system for turning fragmented signals into disciplined execution.'
       })
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: 'Zeno turns market research and execution discipline into an evolving platform.'
+        name: 'The company is being built to look more like infrastructure than signal hype.'
       })
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: 'The company should feel measured, technical, and durable.'
+        name: 'A credible trading company needs both technical depth and operational restraint.'
       })
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: 'This homepage is phase one of a broader product surface.'
+        name: 'The near-term mission is simple: make the core loop reliable and make the company legible.'
       })
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: 'Start with a credible public face, then expand deliberately.'
+        name: 'A serious company introduction should feel calm, clear, and technically credible.'
       })
     ).toBeInTheDocument();
 
-    expect(screen.getByText('Zeno — systematic trading infrastructure with a long-term product horizon.')).toBeInTheDocument();
+    expect(screen.getByText('Zeno — signal intelligence and execution infrastructure built for disciplined growth.')).toBeInTheDocument();
+    expect(screen.getByText('Execution map')).toBeInTheDocument();
+    expect(screen.getByRole('navigation', { name: 'Primary navigation' })).toBeInTheDocument();
   });
 });
