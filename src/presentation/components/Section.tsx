@@ -11,7 +11,14 @@ export function Section({ section }: { section: SiteSection }) {
         </div>
 
         <figure className="section-visual">
-          <img src={section.image.src} alt={section.image.alt} loading="lazy" decoding="async" />
+          <img
+            src={section.image.src}
+            alt={section.image.alt}
+            width={section.image.width}
+            height={section.image.height}
+            loading="lazy"
+            decoding="async"
+          />
           <figcaption>{section.image.caption}</figcaption>
         </figure>
       </div>

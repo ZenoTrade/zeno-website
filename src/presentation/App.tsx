@@ -6,7 +6,7 @@ const content = createLandingContent();
 
 export function App() {
   return (
-    <main className="page-shell">
+    <main className="page-shell" id="top">
       <header className="topbar">
         <strong className="topbar__brand">{content.companyName}</strong>
         <nav className="topbar__nav" aria-label="Primary navigation">
@@ -14,6 +14,7 @@ export function App() {
           <a href="#how-zeno-operates">Approach</a>
           <a href="#company-focus">Focus</a>
         </nav>
+        <a href="#cta-title" className="topbar__cta">Company overview</a>
       </header>
 
       <section className="hero">
@@ -22,6 +23,11 @@ export function App() {
           <h1>{content.hero.title}</h1>
           <p className="hero__subline">Designed for disciplined market participation, measured product growth, and trust built through system quality.</p>
           <p className="hero__description">{content.hero.description}</p>
+          <div className="hero__trustband" aria-label="Zeno company qualities">
+            <span>Structured architecture</span>
+            <span>Risk-aware execution</span>
+            <span>Built for credible growth</span>
+          </div>
           <div className="hero__actions" aria-label="Primary website actions">
             <a href="#what-zeno-does" className="button button--primary">
               {content.hero.primaryAction}

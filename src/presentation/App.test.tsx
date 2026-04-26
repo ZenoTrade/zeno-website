@@ -56,8 +56,10 @@ describe('App', () => {
     expect(screen.getByText('Zeno — signal intelligence and execution infrastructure built for disciplined growth.')).toBeInTheDocument();
     expect(screen.getByText('Execution map')).toBeInTheDocument();
     expect(screen.getByRole('navigation', { name: 'Primary navigation' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Company overview' })).toHaveAttribute('href', '#cta-title');
     expect(screen.getByText('Designed for disciplined market participation, measured product growth, and trust built through system quality.')).toBeInTheDocument();
     expect(screen.getAllByRole('img')).not.toHaveLength(0);
     expect(screen.getAllByRole('img').filter((image) => image.getAttribute('loading') === 'lazy').length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('img').filter((image) => image.getAttribute('width') === '1200' && image.getAttribute('height') === '780').length).toBeGreaterThan(0);
   });
 });

@@ -22,6 +22,8 @@ export interface SiteSection {
     src: string;
     alt: string;
     caption: string;
+    width: number;
+    height: number;
   };
 }
 
@@ -82,9 +84,11 @@ export function createLandingContent(): SiteContent {
           }
         ],
         image: {
-          src: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a6?auto=format&fit=crop&w=1200&q=80',
-          alt: 'Financial charts displayed across multiple screens in a dark trading environment',
-          caption: 'Designed as a disciplined flow from raw market input to controlled execution.'
+          src: '/visuals/platform-overview.svg',
+          alt: 'Structured illustration showing signal collection, scoring, and trade execution',
+          caption: 'A clearer view of the operating flow: collect, assess, and execute with control.',
+          width: 1200,
+          height: 780
         }
       },
       {
@@ -108,9 +112,11 @@ export function createLandingContent(): SiteContent {
           }
         ],
         image: {
-          src: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1200&q=80',
-          alt: 'A modern office workspace with large windows and analytical screens',
-          caption: 'Operational maturity matters before scale, especially in automated trading.'
+          src: '/visuals/operating-model.svg',
+          alt: 'Illustration of a structured operating model with phased controls and review gates',
+          caption: 'Operational maturity matters before scale, especially in automated trading.',
+          width: 1200,
+          height: 780
         }
       },
       {
@@ -134,9 +140,11 @@ export function createLandingContent(): SiteContent {
           }
         ],
         image: {
-          src: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
-          alt: 'City skyline at night with illuminated high-rise buildings',
-          caption: 'The public face should feel measured, calm, and institutionally credible.'
+          src: '/visuals/credibility.svg',
+          alt: 'Abstract market credibility illustration with measured growth and trust markers',
+          caption: 'The public face should feel measured, calm, and institutionally credible.',
+          width: 1200,
+          height: 780
         }
       },
       {
@@ -160,9 +168,11 @@ export function createLandingContent(): SiteContent {
           }
         ],
         image: {
-          src: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1200&q=80',
-          alt: 'Architectural interior with layered glass and geometric light',
-          caption: 'The first impression should support trust now and future expansion later.'
+          src: '/visuals/company-focus.svg',
+          alt: 'Illustration of staged company growth built on a structured foundation',
+          caption: 'The first impression should support trust now and future expansion later.',
+          width: 1200,
+          height: 780
         }
       }
     ],

@@ -1,0 +1,27 @@
+<svg width="1200" height="780" viewBox="0 0 1200 780" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="780" rx="40" fill="#08111E"/>
+  <rect x="72" y="92" width="1056" height="596" rx="32" fill="url(#surface)" stroke="rgba(164,184,255,0.16)"/>
+  <g opacity="0.42">
+    <rect x="170" y="166" width="190" height="360" rx="28" fill="#183B74"/>
+    <rect x="392" y="236" width="190" height="290" rx="28" fill="#12395E"/>
+    <rect x="614" y="128" width="190" height="398" rx="28" fill="#0F4D57"/>
+    <rect x="836" y="286" width="190" height="240" rx="28" fill="#1A2F5E"/>
+  </g>
+  <rect x="176" y="560" width="848" height="62" rx="18" fill="#0E182D" stroke="rgba(164,184,255,0.16)"/>
+  <text x="220" y="600" fill="#EEF4FF" font-size="30" font-weight="600" font-family="Inter, Arial, sans-serif">Clearer company story now. Stronger product proof points next.</text>
+  <path d="M202 508C314 432 420 404 522 404C634 404 718 334 838 334C906 334 950 350 1000 378" stroke="url(#curve)" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="312" cy="454" r="16" fill="#8DA7FF"/>
+  <circle cx="576" cy="402" r="16" fill="#AFC1FF"/>
+  <circle cx="838" cy="334" r="16" fill="#63E3CD"/>
+  <defs>
+    <linearGradient id="surface" x1="72" y1="92" x2="1128" y2="688" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13233E"/>
+      <stop offset="1" stop-color="#09111E"/>
+    </linearGradient>
+    <linearGradient id="curve" x1="202" y1="508" x2="1000" y2="378" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#647FE1"/>
+      <stop offset="0.5" stop-color="#A7BAFF"/>
+      <stop offset="1" stop-color="#63E3CD"/>
+    </linearGradient>
+  </defs>
+</svg>

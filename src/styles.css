@@ -84,6 +84,15 @@ a {
   font-size: 0.95rem;
 }
 
+.topbar__cta {
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(151, 175, 255, 0.2);
+  background: rgba(13, 22, 40, 0.78);
+  color: #e4ecfa;
+  font-size: 0.92rem;
+}
+
 .hero,
 .content-section,
 .cta,
@@ -145,6 +154,21 @@ a {
 .hero__description {
   max-width: 62ch;
   font-size: 1.05rem;
+}
+
+.hero__trustband {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero__trustband span {
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(13, 22, 40, 0.76);
+  border: 1px solid rgba(151, 175, 255, 0.16);
+  color: #dce6f9;
+  font-size: 0.88rem;
 }
 
 .eyebrow {
@@ -304,14 +328,13 @@ a {
   border-radius: 22px;
   border: 1px solid rgba(151, 175, 255, 0.12);
   background: linear-gradient(180deg, rgba(17, 26, 46, 0.92), rgba(7, 13, 24, 0.92));
-  min-height: 280px;
+  aspect-ratio: 1200 / 780;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 .section-visual img {
   width: 100%;
   height: 100%;
-  min-height: 280px;
   object-fit: cover;
   display: block;
   filter: saturate(0.9) contrast(1.02) brightness(0.88);
@@ -388,6 +411,11 @@ a {
   .topbar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .topbar__cta {
+    width: 100%;
+    text-align: center;
   }
 
   .hero {
