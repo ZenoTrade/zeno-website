@@ -1,166 +1,168 @@
+export interface NavLink {
+  label: string;
+  href: string;
+}
+
 export interface HeroContent {
   eyebrow: string;
   title: string;
   subline: string;
-  description: string;
   primaryAction: string;
   secondaryAction: string;
-  stats: Array<{ label: string; value: string }>;
-  trustPoints: string[];
 }
 
-export interface SectionItem {
-  title: string;
-  description: string;
-}
-
-export interface VisualAsset {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-
-export interface FeatureSection {
+export interface ProductModule {
   id: string;
-  eyebrow: string;
+  step: string;
   title: string;
+  shortTitle: string;
   description: string;
-  items: SectionItem[];
+  note: string;
+  icon: 'network' | 'target' | 'shield' | 'bolt';
 }
 
-export interface StandardsSection {
-  id: string;
-  eyebrow: string;
-  title: string;
-  description: string;
-  items: SectionItem[];
-  visual: VisualAsset;
+export interface ReliabilityMetric {
+  label: string;
+  value: string;
 }
 
-export interface RolloutSection {
-  id: string;
-  eyebrow: string;
+export interface WhyPillar {
   title: string;
   description: string;
-  checkpoints: string[];
-  visual: VisualAsset;
+  icon: 'target' | 'blocks' | 'shield';
 }
 
-export interface CtaContent {
+export interface FooterGroup {
   title: string;
-  description: string;
-  primaryAction: string;
-}
-
-export interface FooterContent {
-  tagline: string;
   links: string[];
 }
 
 export interface SiteContent {
   companyName: string;
+  nav: NavLink[];
   hero: HeroContent;
-  platform: FeatureSection;
-  standards: StandardsSection;
-  rollout: RolloutSection;
-  cta: CtaContent;
-  footer: FooterContent;
+  productModules: ProductModule[];
+  reliability: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    metrics: ReliabilityMetric[];
+  };
+  why: {
+    eyebrow: string;
+    pillars: WhyPillar[];
+  };
+  cta: {
+    title: string;
+    description: string;
+    primaryAction: string;
+  };
+  footer: {
+    tagline: string;
+    groups: FooterGroup[];
+  };
 }
 
 export function createLandingContent(): SiteContent {
   return {
     companyName: 'Zeno',
+    nav: [
+      { label: 'Products', href: '#products' },
+      { label: 'Process', href: '#process' },
+      { label: 'Reliability', href: '#reliability' },
+      { label: 'Technology', href: '#technology' },
+      { label: 'Contact', href: '#contact' }
+    ],
     hero: {
-      eyebrow: 'Trading infrastructure',
-      title: 'Signal in. Execution out.',
-      subline: 'Built for disciplined trading teams.',
-      description:
-        'Zeno is building the infrastructure behind cleaner signal intake, stronger decision quality, and controlled multi-platform execution.',
-      primaryAction: 'See the platform',
-      secondaryAction: 'How we operate',
-      stats: [
-        { label: 'Core flow', value: 'Collect → Score → Execute' },
-        { label: 'Coverage', value: 'Broker and crypto execution' },
-        { label: 'Priority', value: 'Reliability before scale' }
-      ],
-      trustPoints: ['Structured architecture', 'Risk-aware execution', 'Measured growth']
+      eyebrow: 'Trader-originated. Disciplined. Reliable.',
+      title: 'Reliable Quant Infrastructure.',
+      subline: 'Signals, scoring, risk, and execution - standalone or fully connected.',
+      primaryAction: 'Explore Products',
+      secondaryAction: 'Request Access'
     },
-    platform: {
-      id: 'platform',
-      eyebrow: 'Platform',
-      title: 'Three layers. One disciplined system.',
-      description:
-        'The platform is split into clear responsibilities so signal intake, decision logic, and execution can improve without creating one fragile workflow.',
-      items: [
+    productModules: [
+      {
+        id: 'signals',
+        step: '01',
+        title: 'Trader Signals',
+        shortTitle: 'Signals',
+        description: 'Ideas from Zeno trader network.',
+        note: 'Standalone or integrated',
+        icon: 'network'
+      },
+      {
+        id: 'scoring',
+        step: '02',
+        title: 'Scoring Engine',
+        shortTitle: 'Scoring Engine',
+        description: 'Ranks ideas by confidence and context.',
+        note: 'Standalone or integrated',
+        icon: 'target'
+      },
+      {
+        id: 'risk',
+        step: '03',
+        title: 'Risk Controls',
+        shortTitle: 'Risk Controls',
+        description: 'Applies sizing, exposure, and drawdown rules.',
+        note: 'Standalone or integrated',
+        icon: 'shield'
+      },
+      {
+        id: 'execution',
+        step: '04',
+        title: 'Execution Layer',
+        shortTitle: 'Execution',
+        description: 'Routes orders across integrated platforms.',
+        note: 'Standalone or integrated',
+        icon: 'bolt'
+      }
+    ],
+    reliability: {
+      eyebrow: 'Reliability you can count on',
+      title: 'Proven. Measured. Consistent.',
+      description: 'Internal performance since inception.',
+      metrics: [
+        { label: 'Sharpe Ratio', value: '1.72' },
+        { label: 'Max Drawdown', value: '-6.1%' },
+        { label: 'System Uptime', value: '99.6%' }
+      ]
+    },
+    why: {
+      eyebrow: 'Why Zeno',
+      pillars: [
         {
-          title: 'Signal collection',
-          description: 'Bring approved sources into one cleaner operating flow.'
+          title: 'Disciplined Process',
+          description: 'Systematic, repeatable, risk-aware.',
+          icon: 'target'
         },
         {
-          title: 'Recommendation quality',
-          description: 'Score signals and improve decision clarity before action.'
+          title: 'Modular Design',
+          description: 'Use modules independently or connect the full stack.',
+          icon: 'blocks'
         },
         {
-          title: 'Execution control',
-          description: 'Route approved actions through controlled broker and crypto adapters.'
+          title: 'Internal Validation',
+          description: 'Rigorously tested. Continuously improved.',
+          icon: 'shield'
         }
       ]
     },
-    standards: {
-      id: 'standards',
-      eyebrow: 'Standards',
-      title: 'Trust is built through operating discipline.',
-      description:
-        'Zeno is being shaped to behave like infrastructure: observable decisions, controlled rollout, and systems judged by quality instead of noise.',
-      items: [
-        {
-          title: 'Observable decisions',
-          description: 'Signals, scoring, and execution paths should be reviewable.'
-        },
-        {
-          title: 'Execution safeguards',
-          description: 'Dry runs, adapters, and logs matter as much as strategy logic.'
-        },
-        {
-          title: 'Commercial restraint',
-          description: 'Expansion should follow proof, not pressure.'
-        }
-      ],
-      visual: {
-        src: 'visuals/credibility.svg',
-        alt: 'Abstract market credibility illustration with measured growth and trust markers',
-        width: 1200,
-        height: 780
-      }
-    },
-    rollout: {
-      id: 'company',
-      eyebrow: 'Company',
-      title: 'Strengthen the core. Then expand.',
-      description:
-        'The near-term goal is clear: present Zeno well, prove the operating model, and expand the surface only when the foundation is ready.',
-      checkpoints: [
-        'Present a credible company story',
-        'Stabilize the collection-to-execution loop',
-        'Expand product surfaces when the foundation is ready'
-      ],
-      visual: {
-        src: 'visuals/company-focus.svg',
-        alt: 'Illustration of staged company growth built on a structured foundation',
-        width: 1200,
-        height: 780
-      }
-    },
     cta: {
-      title: 'A company landing page should be clear, sharp, and credible.',
-      description:
-        'This version cuts the noise and focuses on the parts that build trust fastest.',
-      primaryAction: 'Back to top'
+      title: 'Build with Zeno.',
+      description: 'Reliable quant infrastructure. Standalone or fully connected.',
+      primaryAction: 'Request Access'
     },
     footer: {
-      tagline: 'Zeno — signal intelligence and execution infrastructure for disciplined growth.',
-      links: ['Platform', 'Standards', 'Company']
+      tagline: 'Quant infrastructure for disciplined execution.',
+      groups: [
+        { title: 'Products', links: ['Trader Signals', 'Scoring Engine', 'Risk Controls', 'Execution Layer'] },
+        { title: 'Process', links: ['How It Works', 'Our Approach'] },
+        { title: 'Reliability', links: ['Track Record', 'System Uptime', 'Risk Management'] },
+        { title: 'Technology', links: ['Architecture', 'Security', 'Data & Infrastructure'] },
+        { title: 'Company', links: ['About Us', 'Careers', 'News'] },
+        { title: 'Contact', links: ['Get in Touch', 'Partnerships'] }
+      ]
     }
   };
 }
