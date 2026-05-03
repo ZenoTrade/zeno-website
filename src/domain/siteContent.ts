@@ -1,3 +1,5 @@
+export type IconName = 'network' | 'target' | 'shield' | 'bolt' | 'blocks' | 'chart' | 'clock';
+
 export interface NavLink {
   label: string;
   href: string;
@@ -17,24 +19,34 @@ export interface ProductModule {
   title: string;
   shortTitle: string;
   description: string;
-  note: string;
-  icon: 'network' | 'target' | 'shield' | 'bolt';
+  icon: Extract<IconName, 'network' | 'target' | 'shield' | 'bolt'>;
 }
 
 export interface ReliabilityMetric {
   label: string;
   value: string;
+  icon: Extract<IconName, 'chart' | 'shield' | 'clock'>;
 }
 
 export interface WhyPillar {
   title: string;
   description: string;
-  icon: 'target' | 'blocks' | 'shield';
+  icon: Extract<IconName, 'target' | 'blocks' | 'shield'>;
+}
+
+export interface FooterLink {
+  label: string;
+  href: string;
 }
 
 export interface FooterGroup {
   title: string;
-  links: string[];
+  links: FooterLink[];
+}
+
+export interface SocialLink {
+  label: 'LinkedIn' | 'X' | 'GitHub';
+  href: string;
 }
 
 export interface SiteContent {
@@ -59,7 +71,10 @@ export interface SiteContent {
   };
   footer: {
     tagline: string;
+    copyright: string;
     groups: FooterGroup[];
+    socials: SocialLink[];
+    policies: FooterLink[];
   };
 }
 
@@ -83,38 +98,34 @@ export function createLandingContent(): SiteContent {
     productModules: [
       {
         id: 'signals',
-        step: '01',
+        step: '1',
         title: 'Trader Signals',
         shortTitle: 'Signals',
-        description: 'Ideas from Zeno trader network.',
-        note: 'Standalone or integrated',
+        description: "Ideas from Zeno's trader network.",
         icon: 'network'
       },
       {
         id: 'scoring',
-        step: '02',
+        step: '2',
         title: 'Scoring Engine',
         shortTitle: 'Scoring Engine',
         description: 'Ranks ideas by confidence and context.',
-        note: 'Standalone or integrated',
         icon: 'target'
       },
       {
         id: 'risk',
-        step: '03',
+        step: '3',
         title: 'Risk Controls',
         shortTitle: 'Risk Controls',
         description: 'Applies sizing, exposure, and drawdown rules.',
-        note: 'Standalone or integrated',
         icon: 'shield'
       },
       {
         id: 'execution',
-        step: '04',
+        step: '4',
         title: 'Execution Layer',
         shortTitle: 'Execution',
         description: 'Routes orders across integrated platforms.',
-        note: 'Standalone or integrated',
         icon: 'bolt'
       }
     ],
@@ -123,9 +134,9 @@ export function createLandingContent(): SiteContent {
       title: 'Proven. Measured. Consistent.',
       description: 'Internal performance since inception.',
       metrics: [
-        { label: 'Sharpe Ratio', value: '1.72' },
-        { label: 'Max Drawdown', value: '-6.1%' },
-        { label: 'System Uptime', value: '99.6%' }
+        { label: 'Sharpe Ratio', value: '1.72', icon: 'chart' },
+        { label: 'Max Drawdown', value: '-6.1%', icon: 'shield' },
+        { label: 'System Uptime', value: '99.6%', icon: 'clock' }
       ]
     },
     why: {
@@ -155,13 +166,64 @@ export function createLandingContent(): SiteContent {
     },
     footer: {
       tagline: 'Quant infrastructure for disciplined execution.',
+      copyright: 'Copyright 2025 Zeno Trading. All rights reserved.',
       groups: [
-        { title: 'Products', links: ['Trader Signals', 'Scoring Engine', 'Risk Controls', 'Execution Layer'] },
-        { title: 'Process', links: ['How It Works', 'Our Approach'] },
-        { title: 'Reliability', links: ['Track Record', 'System Uptime', 'Risk Management'] },
-        { title: 'Technology', links: ['Architecture', 'Security', 'Data & Infrastructure'] },
-        { title: 'Company', links: ['About Us', 'Careers', 'News'] },
-        { title: 'Contact', links: ['Get in Touch', 'Partnerships'] }
+        {
+          title: 'Products',
+          links: [
+            { label: 'Trader Signals', href: '#products' },
+            { label: 'Scoring Engine', href: '#products' },
+            { label: 'Risk Controls', href: '#products' },
+            { label: 'Execution Layer', href: '#products' }
+          ]
+        },
+        {
+          title: 'Process',
+          links: [
+            { label: 'How It Works', href: '#process' },
+            { label: 'Our Approach', href: '#process' }
+          ]
+        },
+        {
+          title: 'Reliability',
+          links: [
+            { label: 'Track Record', href: '#reliability' },
+            { label: 'System Uptime', href: '#reliability' },
+            { label: 'Risk Management', href: '#reliability' }
+          ]
+        },
+        {
+          title: 'Technology',
+          links: [
+            { label: 'Architecture', href: '#technology' },
+            { label: 'Security', href: '#technology' },
+            { label: 'Data & Infrastructure', href: '#technology' }
+          ]
+        },
+        {
+          title: 'Company',
+          links: [
+            { label: 'About Us', href: '#top' },
+            { label: 'Careers', href: '#top' },
+            { label: 'News', href: '#top' }
+          ]
+        },
+        {
+          title: 'Contact',
+          links: [
+            { label: 'Get In Touch', href: '#contact' },
+            { label: 'Partnerships', href: '#contact' }
+          ]
+        }
+      ],
+      socials: [
+        { label: 'LinkedIn', href: '#' },
+        { label: 'X', href: '#' },
+        { label: 'GitHub', href: '#' }
+      ],
+      policies: [
+        { label: 'Privacy Policy', href: '#' },
+        { label: 'Terms of Service', href: '#' }
       ]
     }
   };
