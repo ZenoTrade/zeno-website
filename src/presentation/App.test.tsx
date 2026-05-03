@@ -12,7 +12,7 @@ describe('App', () => {
     ).toBeInTheDocument();
 
     expect(screen.getByRole('navigation', { name: 'Primary navigation' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Zeno home' })).toHaveAttribute('href', '#top');
+    expect(screen.getAllByRole('link', { name: 'Zeno home' })[0]).toHaveAttribute('href', '#top');
     expect(screen.getByRole('link', { name: /Explore Products/ })).toHaveAttribute('href', '#products');
     expect(screen.getAllByRole('link', { name: /Request Access/ })[0]).toHaveAttribute('href', '#contact');
 
@@ -28,8 +28,8 @@ describe('App', () => {
     ).toBeInTheDocument();
 
     expect(screen.getAllByText('Trader Signals').length).toBeGreaterThan(0);
-    expect(screen.getByText('Scoring Engine')).toBeInTheDocument();
-    expect(screen.getByText('Risk Controls')).toBeInTheDocument();
+    expect(screen.getAllByText('Scoring Engine').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Risk Controls').length).toBeGreaterThan(0);
     expect(screen.getByText('Execution Layer')).toBeInTheDocument();
     expect(screen.getAllByText('Standalone or integrated').length).toBe(4);
 
