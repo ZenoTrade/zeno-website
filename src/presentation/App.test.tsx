@@ -2,48 +2,55 @@ import { render, screen } from '@testing-library/react';
 import { App } from './App';
 
 describe('App', () => {
-  it('renders a sharper professional landing flow', () => {
+  it('renders the simplified modular Zeno landing page', () => {
     render(<App />);
 
     expect(
       screen.getByRole('heading', {
-        name: 'Signal in. Execution out.'
+        name: 'Reliable Quant Infrastructure.'
       })
     ).toBeInTheDocument();
 
     expect(screen.getByRole('navigation', { name: 'Primary navigation' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Company overview' })).toHaveAttribute('href', '#company-intro');
-    expect(screen.getByRole('link', { name: 'See the platform' })).toHaveAttribute('href', '#platform');
-    expect(screen.getByRole('link', { name: 'How we operate' })).toHaveAttribute('href', '#standards');
+    expect(screen.getByRole('link', { name: 'Zeno home' })).toHaveAttribute('href', '#top');
+    expect(screen.getByRole('link', { name: /Explore Products/ })).toHaveAttribute('href', '#products');
+    expect(screen.getAllByRole('link', { name: /Request Access/ })[0]).toHaveAttribute('href', '#contact');
+
+    expect(screen.getByText('Signals, scoring, risk, and execution - standalone or fully connected.')).toBeInTheDocument();
+    expect(screen.getByLabelText('Modular Zeno product architecture')).toBeInTheDocument();
+    expect(screen.getByText('Use independently')).toBeInTheDocument();
+    expect(screen.getByText('Or connect the full stack')).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: 'Three layers. One disciplined system.'
+        name: 'Use one module or the full stack.'
+      })
+    ).toBeInTheDocument();
+
+    expect(screen.getAllByText('Trader Signals').length).toBeGreaterThan(0);
+    expect(screen.getByText('Scoring Engine')).toBeInTheDocument();
+    expect(screen.getByText('Risk Controls')).toBeInTheDocument();
+    expect(screen.getByText('Execution Layer')).toBeInTheDocument();
+    expect(screen.getAllByText('Standalone or integrated').length).toBe(4);
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'Standalone first. Connected when needed.'
       })
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
-        name: 'Trust is built through operating discipline.'
+        name: 'Proven. Measured. Consistent.'
       })
     ).toBeInTheDocument();
+    expect(screen.getByText('1.72')).toBeInTheDocument();
+    expect(screen.getByText('-6.1%')).toBeInTheDocument();
+    expect(screen.getByText('99.6%')).toBeInTheDocument();
 
-    expect(
-      screen.getByRole('heading', {
-        name: 'Strengthen the core. Then expand.'
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByText('Built for disciplined trading teams.')).toBeInTheDocument();
-    expect(screen.getByText('Measured growth')).toBeInTheDocument();
-    expect(screen.getByText('Execution map')).toBeInTheDocument();
-    expect(screen.getByText('Signal collection')).toBeInTheDocument();
-    expect(screen.getByText('Observable decisions')).toBeInTheDocument();
-    expect(screen.getByText('Present a credible company story')).toBeInTheDocument();
-
-    const lazyImages = screen.getAllByRole('img').filter((image) => image.getAttribute('loading') === 'lazy');
-    expect(lazyImages.length).toBeGreaterThan(0);
-    expect(lazyImages.filter((image) => image.getAttribute('src')?.includes('visuals/')).length).toBeGreaterThan(0);
-    expect(lazyImages.filter((image) => image.getAttribute('width') === '1200' && image.getAttribute('height') === '780').length).toBeGreaterThan(0);
+    expect(screen.getByText('Disciplined Process')).toBeInTheDocument();
+    expect(screen.getByText('Modular Design')).toBeInTheDocument();
+    expect(screen.getByText('Internal Validation')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Build with Zeno.' })).toBeInTheDocument();
   });
 });
