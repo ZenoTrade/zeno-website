@@ -1,72 +1,64 @@
-export function HeroVisual() {
-  return (
-    <div className="hero-visual" aria-hidden="true">
-      <div className="hero-visual__badge">Execution map</div>
+import type { ProductModule } from '../../domain/siteContent';
 
-      <svg viewBox="0 0 560 420" role="img" aria-label="Abstract illustration of signal flow and execution">
-        <defs>
-          <linearGradient id="flowLine" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(104, 146, 255, 0.15)" />
-            <stop offset="50%" stopColor="rgba(126, 168, 255, 0.95)" />
-            <stop offset="100%" stopColor="rgba(95, 229, 208, 0.85)" />
-          </linearGradient>
-          <linearGradient id="surface" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(25, 42, 72, 0.95)" />
-            <stop offset="100%" stopColor="rgba(8, 15, 28, 0.88)" />
-          </linearGradient>
-        </defs>
+interface HeroVisualProps {
+  modules: ProductModule[];
+}
 
-        <rect x="16" y="18" width="528" height="384" rx="28" fill="url(#surface)" stroke="rgba(156, 179, 255, 0.18)" />
-
-        <path
-          d="M64 292 C124 292, 150 180, 216 180 S308 250, 360 250 428 120, 496 120"
-          stroke="url(#flowLine)"
-          strokeWidth="6"
-          fill="none"
-          strokeLinecap="round"
-        />
-
-        <circle cx="110" cy="292" r="9" fill="#7d9eff" />
-        <circle cx="250" cy="199" r="9" fill="#8aa8ff" />
-        <circle cx="392" cy="228" r="9" fill="#98b4ff" />
-        <circle cx="496" cy="120" r="11" fill="#62e0ca" />
-
-        <g>
-          <rect x="58" y="74" width="126" height="78" rx="18" fill="rgba(13, 24, 42, 0.92)" stroke="rgba(144, 168, 255, 0.18)" />
-          <text x="78" y="106" fill="#9ab1e8" fontSize="13" fontFamily="Inter, sans-serif">
-            SOURCES
-          </text>
-          <text x="78" y="132" fill="#e7eefc" fontSize="24" fontFamily="Inter, sans-serif" fontWeight="700">
-            Collect
-          </text>
-        </g>
-
-        <g>
-          <rect x="214" y="250" width="136" height="88" rx="18" fill="rgba(13, 24, 42, 0.92)" stroke="rgba(144, 168, 255, 0.18)" />
-          <text x="236" y="282" fill="#9ab1e8" fontSize="13" fontFamily="Inter, sans-serif">
-            DECISION LAYER
-          </text>
-          <text x="236" y="308" fill="#e7eefc" fontSize="24" fontFamily="Inter, sans-serif" fontWeight="700">
-            Score
-          </text>
-        </g>
-
-        <g>
-          <rect x="378" y="54" width="128" height="84" rx="18" fill="rgba(10, 27, 33, 0.94)" stroke="rgba(98, 224, 202, 0.28)" />
-          <text x="400" y="86" fill="#97ddcf" fontSize="13" fontFamily="Inter, sans-serif">
-            EXECUTION
-          </text>
-          <text x="400" y="112" fill="#effffb" fontSize="24" fontFamily="Inter, sans-serif" fontWeight="700">
-            Execute
-          </text>
-        </g>
-
-        <g opacity="0.9">
-          <rect x="86" y="340" width="88" height="20" rx="10" fill="rgba(108, 136, 214, 0.18)" />
-          <rect x="188" y="340" width="122" height="20" rx="10" fill="rgba(108, 136, 214, 0.12)" />
-          <rect x="324" y="340" width="94" height="20" rx="10" fill="rgba(108, 136, 214, 0.18)" />
-        </g>
+function ModuleIcon({ name }: { name: ProductModule['icon'] }) {
+  if (name === 'network') {
+    return (
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="13" r="5" />
+        <circle cx="13" cy="32" r="5" />
+        <circle cx="35" cy="32" r="5" />
+        <path d="M21 17l-6 10M27 17l6 10M18 32h12" />
       </svg>
-    </div>
+    );
+  }
+
+  if (name === 'target') {
+    return (
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="15" />
+        <circle cx="24" cy="24" r="6" />
+        <path d="M24 4v8M24 36v8M4 24h8M36 24h8" />
+      </svg>
+    );
+  }
+
+  if (name === 'shield') {
+    return (
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M24 6l15 6v11c0 10-6 16-15 19C15 39 9 33 9 23V12l15-6z" />
+        <path d="M18 24l4 4 8-9" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M28 4L12 27h12l-4 17 16-24H24l4-16z" />
+    </svg>
+  );
+}
+
+export function HeroVisual({ modules }: HeroVisualProps) {
+  return (
+    <aside className="hero-visual" aria-label="Modular Zeno product architecture">
+      <p className="hero-visual__label">Use independently</p>
+      <div className="hero-visual__grid">
+        {modules.map((module) => (
+          <article key={module.id} className="hero-module">
+            <span className="hero-module__step">{module.step}</span>
+            <span className="hero-module__icon">
+              <ModuleIcon name={module.icon} />
+            </span>
+            <h2>{module.shortTitle}</h2>
+            <p>{module.description}</p>
+          </article>
+        ))}
+      </div>
+      <p className="hero-visual__label hero-visual__label--bottom">Or connect the full stack</p>
+    </aside>
   );
 }
