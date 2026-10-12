@@ -20,7 +20,7 @@ export const pricingPlans: PricingPlan[] = [
       'Runs on your PC or VPS, next to your MT5',
       'Per-target risk split and auto break-even',
       'Your risk per trade, your rules',
-      '1 MT5 account (+$15/month per extra account)'
+      '1 MT5 account per license'
     ],
     prices: {
       monthly: { planId: 'copier-monthly', usd: 49 },
@@ -128,4 +128,34 @@ export function isPublishable(summary: TrackRecordSummary | null, now: Date = ne
   }
   const days = (now.getTime() - new Date(summary.first_trade).getTime()) / 86_400_000;
   return days >= MIN_TRACK_RECORD_DAYS;
+}
+
+export interface OrderStatus {
+  status: 'new' | 'settled' | 'expired' | 'invalid';
+  plan_id: string;
+  license_key: string;
+  expires_at: string;
+  telegram_link: string;
+}
+
+export function readOrderFromUrl(search: string): { orderId: string; token: string } | null {
+  const params = new URLSearchParams(search);
+  const orderId = params.get('order');
+  const token = params.get('t');
+  return orderId && token ? { orderId, token } : null;
+}
+
+export async function fetchOrder(
+  config: CheckoutConfig,
+  orderId: string,
+  token: string,
+  fetchImpl: typeof fetch = fetch
+): Promise<OrderStatus> {
+  const response = await fetchImpl(
+    `${config.apiUrl}/v1/orders/${encodeURIComponent(orderId)}?t=${encodeURIComponent(token)}`
+  );
+  if (!response.ok) {
+    throw new Error('Order not found');
+  }
+  return (await response.json()) as OrderStatus;
 }

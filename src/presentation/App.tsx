@@ -7,7 +7,9 @@ import {
   type WhyPillar
 } from '../domain/siteContent';
 import { HeroVisual } from './components/HeroVisual';
+import { Legal } from './components/Legal';
 import { Pricing } from './components/Pricing';
+import { ThankYou } from './components/ThankYou';
 import { TrackRecordPanel } from './components/TrackRecordPanel';
 import { BrandMark, Icon, SocialIcon, ThemeToggleIcon } from './components/Icons';
 
@@ -178,6 +180,8 @@ export function App() {
         </div>
       </section>
 
+      <ThankYou />
+
       <Pricing />
 
       <section id="reliability" className="reliability" aria-labelledby="reliability-title">
@@ -222,6 +226,8 @@ export function App() {
           {content.cta.primaryAction} <span aria-hidden="true">→</span>
         </a>
       </section>
+
+      <Legal />
 
       <footer className="footer">
         <div className="footer__brand">

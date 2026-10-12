@@ -45,3 +45,11 @@ describe('pricing', () => {
     expect(isPublishable({ ...summary, trades: 0 }, new Date('2026-12-01'))).toBe(false);
   });
 });
+
+describe('orders', () => {
+  it('reads the order reference from the return URL', async () => {
+    const { readOrderFromUrl } = await import('./pricing');
+    expect(readOrderFromUrl('?order=abc&t=tok')).toEqual({ orderId: 'abc', token: 'tok' });
+    expect(readOrderFromUrl('?order=abc')).toBeNull();
+  });
+});

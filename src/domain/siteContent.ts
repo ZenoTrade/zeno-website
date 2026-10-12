@@ -170,7 +170,7 @@ export function createLandingContent(): SiteContent {
     },
     footer: {
       tagline: 'Quant infrastructure for disciplined execution.',
-      copyright: 'Copyright 2025 Zeno Trading. All rights reserved.',
+      copyright: 'Copyright 2026 Zeno Trading. All rights reserved.',
       groups: [
         {
           title: 'Products',
@@ -226,8 +226,9 @@ export function createLandingContent(): SiteContent {
         { label: 'GitHub', href: '#' }
       ],
       policies: [
-        { label: 'Privacy Policy', href: '#' },
-        { label: 'Terms of Service', href: '#' }
+        { label: 'Privacy Policy', href: '#privacy' },
+        { label: 'Terms of Service', href: '#terms' },
+        { label: 'Risk Disclosure', href: '#risk' }
       ]
     }
   };

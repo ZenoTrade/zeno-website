@@ -25,7 +25,8 @@ describe('createLandingContent', () => {
     expect(content.footer.socials.map((item) => item.label)).toEqual(['LinkedIn', 'X', 'GitHub']);
     expect(content.footer.policies.map((item) => item.label)).toEqual([
       'Privacy Policy',
-      'Terms of Service'
+      'Terms of Service',
+      'Risk Disclosure'
     ]);
   });
 });
