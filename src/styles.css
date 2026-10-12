@@ -1263,3 +1263,98 @@ svg {
     grid-template-columns: 1fr;
   }
 }
+
+.outlook {
+  display: grid;
+  gap: 12px;
+  max-width: 900px;
+}
+
+.outlook h2 {
+  font-size: clamp(2rem, 3vw, 2.62rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.outlook p {
+  color: var(--muted-strong);
+  max-width: 75ch;
+}
+
+.outlook__label {
+  font-weight: 600;
+  color: var(--ink) !important;
+}
+
+.outlook__chart {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+}
+
+.outlook__chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.outlook__chart figcaption,
+.outlook__meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.outlook__grid {
+  stroke: var(--chart-line);
+  stroke-width: 1;
+}
+
+.outlook__tick {
+  fill: var(--muted);
+  font-size: 11px;
+}
+
+.outlook__band95 {
+  fill: var(--accent);
+  opacity: 0.12;
+}
+
+.outlook__band80 {
+  fill: var(--accent);
+  opacity: 0.24;
+}
+
+.outlook__history {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.outlook__centre {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
+
+.outlook__table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 560px;
+}
+
+.outlook__table th,
+.outlook__table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.outlook__table thead th {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.85rem;
+}

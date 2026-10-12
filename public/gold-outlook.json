@@ -1,0 +1,200 @@
+{
+  "title": "Gold monthly-average outlook",
+  "label": "A range forecast, not a trading signal",
+  "target": "World Bank monthly average gold price, USD/oz (not the live spot price)",
+  "origin": "2026-09",
+  "origin_price": 4319.0,
+  "data_fetched_at_utc": "2026-10-12T22:17:11+00:00",
+  "generated_at_utc": "2026-10-12T23:02:17+00:00",
+  "disclaimer": "Range outlook for the World Bank monthly average gold price, 1 to 12 months ahead. The centre line is close to gold's long-run trend. Our backtests found no macro indicator that beat that trend. The shaded bands show the historical spread of outcomes. This is not a buy or sell signal and not investment advice.",
+  "volatility": {
+    "vol_monthly": 0.0611,
+    "vs_median": 1.95,
+    "percentile": 0.95,
+    "note": "Volatility is unusually high right now, and in past periods like this the bands proved wider than needed."
+  },
+  "horizons": [
+    {
+      "target_month": "2026-10",
+      "h": 1,
+      "centre": 4327,
+      "p10": 3985,
+      "p90": 4709,
+      "p2_5": 3793,
+      "p97_5": 5070
+    },
+    {
+      "target_month": "2026-12",
+      "h": 3,
+      "centre": 4395,
+      "p10": 3727,
+      "p90": 5338,
+      "p2_5": 3376,
+      "p97_5": 6058
+    },
+    {
+      "target_month": "2027-03",
+      "h": 6,
+      "centre": 4490,
+      "p10": 3360,
+      "p90": 6217,
+      "p2_5": 2835,
+      "p97_5": 7297
+    },
+    {
+      "target_month": "2027-09",
+      "h": 12,
+      "centre": 4723,
+      "p10": 3187,
+      "p90": 7559,
+      "p2_5": 2151,
+      "p97_5": 9621
+    }
+  ],
+  "history": [
+    {
+      "month": "2023-10",
+      "price": 1916.0
+    },
+    {
+      "month": "2023-11",
+      "price": 1984.0
+    },
+    {
+      "month": "2023-12",
+      "price": 2026.0
+    },
+    {
+      "month": "2024-01",
+      "price": 2034.0
+    },
+    {
+      "month": "2024-02",
+      "price": 2023.0
+    },
+    {
+      "month": "2024-03",
+      "price": 2158.0
+    },
+    {
+      "month": "2024-04",
+      "price": 2331.0
+    },
+    {
+      "month": "2024-05",
+      "price": 2351.0
+    },
+    {
+      "month": "2024-06",
+      "price": 2326.0
+    },
+    {
+      "month": "2024-07",
+      "price": 2398.0
+    },
+    {
+      "month": "2024-08",
+      "price": 2470.0
+    },
+    {
+      "month": "2024-09",
+      "price": 2571.0
+    },
+    {
+      "month": "2024-10",
+      "price": 2690.0
+    },
+    {
+      "month": "2024-11",
+      "price": 2651.0
+    },
+    {
+      "month": "2024-12",
+      "price": 2648.0
+    },
+    {
+      "month": "2025-01",
+      "price": 2710.0
+    },
+    {
+      "month": "2025-02",
+      "price": 2895.0
+    },
+    {
+      "month": "2025-03",
+      "price": 2983.0
+    },
+    {
+      "month": "2025-04",
+      "price": 3218.0
+    },
+    {
+      "month": "2025-05",
+      "price": 3309.0
+    },
+    {
+      "month": "2025-06",
+      "price": 3353.0
+    },
+    {
+      "month": "2025-07",
+      "price": 3340.0
+    },
+    {
+      "month": "2025-08",
+      "price": 3368.0
+    },
+    {
+      "month": "2025-09",
+      "price": 3668.0
+    },
+    {
+      "month": "2025-10",
+      "price": 4058.0
+    },
+    {
+      "month": "2025-11",
+      "price": 4087.0
+    },
+    {
+      "month": "2025-12",
+      "price": 4309.0
+    },
+    {
+      "month": "2026-01",
+      "price": 4753.0
+    },
+    {
+      "month": "2026-02",
+      "price": 5020.0
+    },
+    {
+      "month": "2026-03",
+      "price": 4856.0
+    },
+    {
+      "month": "2026-04",
+      "price": 4721.0
+    },
+    {
+      "month": "2026-05",
+      "price": 4587.0
+    },
+    {
+      "month": "2026-06",
+      "price": 4228.0
+    },
+    {
+      "month": "2026-07",
+      "price": 4073.0
+    },
+    {
+      "month": "2026-08",
+      "price": 4411.0
+    },
+    {
+      "month": "2026-09",
+      "price": 4319.0
+    }
+  ]
+}

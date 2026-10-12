@@ -87,6 +87,7 @@ export function createLandingContent(): SiteContent {
       { label: 'Process', href: '#process' },
       { label: 'Pricing', href: '#pricing' },
       { label: 'Reliability', href: '#reliability' },
+      { label: 'Gold outlook', href: '#gold-outlook' },
       { label: 'Technology', href: '#technology' },
       { label: 'Contact', href: '#contact' }
     ],

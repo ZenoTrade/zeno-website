@@ -6,6 +6,7 @@ import {
   type SocialLink,
   type WhyPillar
 } from '../domain/siteContent';
+import { GoldOutlook } from './components/GoldOutlook';
 import { HeroVisual } from './components/HeroVisual';
 import { Legal } from './components/Legal';
 import { Pricing } from './components/Pricing';
@@ -201,6 +202,8 @@ export function App() {
           </div>
         </article>
       </section>
+
+      <GoldOutlook />
 
       <section id="technology" className="why" aria-labelledby="why-title">
         <p className="eyebrow">{content.why.eyebrow}</p>
