@@ -85,6 +85,7 @@ export function createLandingContent(): SiteContent {
     nav: [
       { label: 'Products', href: '#products' },
       { label: 'Process', href: '#process' },
+      { label: 'Pricing', href: '#pricing' },
       { label: 'Reliability', href: '#reliability' },
       { label: 'Technology', href: '#technology' },
       { label: 'Contact', href: '#contact' }

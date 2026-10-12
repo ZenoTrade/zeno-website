@@ -62,6 +62,12 @@ describe('App', () => {
     expect(screen.queryByText('99.6%')).not.toBeInTheDocument();
     expect(screen.queryByRole('img', { name: /performance/i })).not.toBeInTheDocument();
 
+    expect(screen.getByRole('heading', { name: 'Simple plans. Paid in crypto.' })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Buy Copier + Signals' }));
+    expect(screen.getByRole('form', { name: 'Checkout' })).toHaveTextContent('$99/month');
+    await user.click(screen.getByRole('button', { name: /Yearly/ }));
+    expect(screen.getByRole('form', { name: 'Checkout' })).toHaveTextContent('$899/year');
+
     expect(screen.getByText('Disciplined Process')).toBeInTheDocument();
     expect(screen.getByText('Modular Design')).toBeInTheDocument();
     expect(screen.getByText('Internal Validation')).toBeInTheDocument();

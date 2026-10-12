@@ -5,7 +5,7 @@ describe('createLandingContent', () => {
     const content = createLandingContent();
 
     expect(content.companyName).toBe('Zeno');
-    expect(content.nav).toHaveLength(5);
+    expect(content.nav).toHaveLength(6);
     expect(content.hero.title).toBe('Reliable Quant Infrastructure.');
     expect(content.hero.subline).toBe(
       'Signals, scoring, risk, and execution - standalone or fully connected.'

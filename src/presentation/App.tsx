@@ -7,6 +7,8 @@ import {
   type WhyPillar
 } from '../domain/siteContent';
 import { HeroVisual } from './components/HeroVisual';
+import { Pricing } from './components/Pricing';
+import { TrackRecordPanel } from './components/TrackRecordPanel';
 import { BrandMark, Icon, SocialIcon, ThemeToggleIcon } from './components/Icons';
 
 const content = createLandingContent();
@@ -93,15 +95,6 @@ function WhyCard({ pillar }: { pillar: WhyPillar }) {
   );
 }
 
-function TrackRecordNotice({ note }: { note: string }) {
-  return (
-    <div className="performance-chart performance-chart--pending">
-      <p className="eyebrow">Track record</p>
-      <p>{note}</p>
-    </div>
-  );
-}
-
 function SocialLinkItem({ social }: { social: SocialLink }) {
   return (
     <a href={social.href} className="footer__social-link" aria-label={social.label}>
@@ -185,6 +178,8 @@ export function App() {
         </div>
       </section>
 
+      <Pricing />
+
       <section id="reliability" className="reliability" aria-labelledby="reliability-title">
         <article className="reliability-panel">
           <div className="reliability__copy">
@@ -193,7 +188,7 @@ export function App() {
             <p>{content.reliability.description}</p>
           </div>
 
-          <TrackRecordNotice note={content.reliability.trackRecordNote} />
+          <TrackRecordPanel note={content.reliability.trackRecordNote} />
 
           <div className="metric-grid">
             {content.reliability.metrics.map((metric) => (
