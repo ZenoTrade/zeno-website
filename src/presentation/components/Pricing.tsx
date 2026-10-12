@@ -77,6 +77,15 @@ export function Pricing() {
           Pay with {paymentMethods.join(', ')}. No ID, no card, no account. Your license key arrives
           by Telegram or email as soon as the payment confirms.
         </p>
+        {config.botUsername ? (
+          <p>
+            New here?{' '}
+            <a href={`https://t.me/${config.botUsername}?start=trial`}>
+              Try Copier + Signals free for 7 days
+            </a>{' '}
+            in Telegram (send /trial).
+          </p>
+        ) : null}
         <div className="pricing__toggle" role="group" aria-label="Billing period">
           {(['monthly', 'yearly'] as const).map((p) => (
             <button
