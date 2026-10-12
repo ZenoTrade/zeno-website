@@ -58,6 +58,7 @@ export interface SiteContent {
     eyebrow: string;
     title: string;
     description: string;
+    trackRecordNote: string;
     metrics: ReliabilityMetric[];
   };
   why: {
@@ -130,13 +131,15 @@ export function createLandingContent(): SiteContent {
       }
     ],
     reliability: {
-      eyebrow: 'Reliability you can count on',
-      title: 'Proven. Measured. Consistent.',
-      description: 'Internal performance since inception.',
+      eyebrow: 'Reliability you can verify',
+      title: 'Measured in public.',
+      description: 'Every signal and its result is logged with a timestamp. No performance numbers until they can be checked.',
+      trackRecordNote:
+        'The public track record opens once 30 days of trades are logged. Results will be published trade by trade, wins and losses alike.',
       metrics: [
-        { label: 'Sharpe Ratio', value: '1.72', icon: 'chart' },
-        { label: 'Max Drawdown', value: '-6.1%', icon: 'shield' },
-        { label: 'System Uptime', value: '99.6%', icon: 'clock' }
+        { label: 'Signals published with results', value: 'Every one', icon: 'chart' },
+        { label: 'Risk limits per account', value: 'Your rules', icon: 'shield' },
+        { label: 'Track record access', value: 'Public', icon: 'clock' }
       ]
     },
     why: {

@@ -1038,3 +1038,8 @@ svg {
     align-items: start;
   }
 }
+
+.performance-chart--pending {
+  align-content: center;
+  color: var(--muted-strong);
+}

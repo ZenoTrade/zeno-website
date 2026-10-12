@@ -16,11 +16,9 @@ describe('createLandingContent', () => {
       step: '1',
       title: 'Trader Signals'
     });
-    expect(content.reliability.metrics).toEqual([
-      { label: 'Sharpe Ratio', value: '1.72', icon: 'chart' },
-      { label: 'Max Drawdown', value: '-6.1%', icon: 'shield' },
-      { label: 'System Uptime', value: '99.6%', icon: 'clock' }
-    ]);
+    expect(content.reliability.metrics).toHaveLength(3);
+    // Unverified performance figures stay off the site until the public track record backs them.
+    expect(JSON.stringify(content.reliability)).not.toMatch(/sharpe|drawdown|uptime|\d+(\.\d+)?%/i);
     expect(content.why.pillars).toHaveLength(3);
     expect(content.cta.title).toBe('Build with Zeno.');
     expect(content.footer.groups).toHaveLength(6);

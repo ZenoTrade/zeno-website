@@ -93,27 +93,11 @@ function WhyCard({ pillar }: { pillar: WhyPillar }) {
   );
 }
 
-function PerformanceChart() {
+function TrackRecordNotice({ note }: { note: string }) {
   return (
-    <div className="performance-chart">
-      <div className="performance-chart__scales" aria-hidden="true">
-        <span>+40%</span>
-        <span>+20%</span>
-        <span>-20%</span>
-      </div>
-      <svg viewBox="0 0 520 180" role="img" aria-label="Rising internal performance line chart">
-        <line x1="24" y1="30" x2="496" y2="30" />
-        <line x1="24" y1="88" x2="496" y2="88" />
-        <line x1="24" y1="146" x2="496" y2="146" />
-        <path d="M30 132C72 128 95 118 126 116C160 114 179 97 210 100C246 103 258 78 295 79C335 80 352 53 390 50C430 47 450 25 490 18" />
-      </svg>
-      <div className="performance-chart__months" aria-hidden="true">
-        <span>Jan '24</span>
-        <span>Apr '24</span>
-        <span>Jul '24</span>
-        <span>Oct '24</span>
-        <span>Apr '25</span>
-      </div>
+    <div className="performance-chart performance-chart--pending">
+      <p className="eyebrow">Track record</p>
+      <p>{note}</p>
     </div>
   );
 }
@@ -209,7 +193,7 @@ export function App() {
             <p>{content.reliability.description}</p>
           </div>
 
-          <PerformanceChart />
+          <TrackRecordNotice note={content.reliability.trackRecordNote} />
 
           <div className="metric-grid">
             {content.reliability.metrics.map((metric) => (

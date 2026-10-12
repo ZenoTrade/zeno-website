@@ -53,12 +53,14 @@ describe('App', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: 'Proven. Measured. Consistent.'
+        name: 'Measured in public.'
       })
     ).toBeInTheDocument();
-    expect(screen.getByText('1.72')).toBeInTheDocument();
-    expect(screen.getByText('-6.1%')).toBeInTheDocument();
-    expect(screen.getByText('99.6%')).toBeInTheDocument();
+    expect(screen.getByText(/public track record opens once 30 days/)).toBeInTheDocument();
+    expect(screen.queryByText('1.72')).not.toBeInTheDocument();
+    expect(screen.queryByText('-6.1%')).not.toBeInTheDocument();
+    expect(screen.queryByText('99.6%')).not.toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: /performance/i })).not.toBeInTheDocument();
 
     expect(screen.getByText('Disciplined Process')).toBeInTheDocument();
     expect(screen.getByText('Modular Design')).toBeInTheDocument();
