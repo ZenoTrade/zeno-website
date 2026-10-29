@@ -81,7 +81,7 @@ export function Pricing() {
           <p>
             New here?{' '}
             <a href={`https://t.me/${config.botUsername}?start=trial`}>
-              Try Copier + Signals free for 7 days
+              Try Guard, Copier and Signals free for 7 days
             </a>{' '}
             in Telegram (send /trial).
           </p>

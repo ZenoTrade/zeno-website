@@ -14,10 +14,12 @@ describe('pricing', () => {
   it('matches the license server plan ids and prices', () => {
     const ids = pricingPlans.flatMap((p) => [p.prices.monthly.planId, p.prices.yearly.planId]);
     expect(ids).toEqual([
+      'prop-monthly', 'prop-yearly', 'riskguard-monthly', 'riskguard-yearly',
       'copier-monthly', 'copier-yearly', 'bundle-monthly', 'bundle-yearly',
-      'signals-monthly', 'signals-yearly', 'riskguard-monthly', 'riskguard-yearly'
+      'signals-monthly', 'signals-yearly'
     ]);
-    expect(pricingPlans.find((p) => p.family === 'bundle')?.prices.monthly.usd).toBe(99);
+    expect(pricingPlans.find((p) => p.family === 'prop')?.prices.monthly.usd).toBe(59);
+    expect(pricingPlans.filter((p) => p.comingSoon)).toEqual([]);
   });
 
   it('starts a checkout and returns the BTCPay link', async () => {

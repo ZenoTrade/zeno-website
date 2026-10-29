@@ -94,7 +94,7 @@ export function createLandingContent(): SiteContent {
     hero: {
       eyebrow: 'Trader-originated. Disciplined. Reliable.',
       title: 'Reliable Quant Infrastructure.',
-      subline: 'Signals, scoring, risk, and execution - standalone or fully connected.',
+      subline: 'Prop-firm rule enforcement and signal copying for MetaTrader 5 - standalone or connected.',
       primaryAction: 'Explore Products',
       secondaryAction: 'Request Access'
     },
@@ -102,25 +102,25 @@ export function createLandingContent(): SiteContent {
       {
         id: 'signals',
         step: '1',
-        title: 'Trader Signals',
+        title: 'Signal Intake',
         shortTitle: 'Signals',
-        description: "Ideas from Zeno's trader network.",
+        description: 'Reads the Telegram channels you follow, in any format.',
         icon: 'network'
       },
       {
         id: 'scoring',
         step: '2',
-        title: 'Scoring Engine',
-        shortTitle: 'Scoring Engine',
-        description: 'Ranks ideas by confidence and context.',
+        title: 'Signal Checks',
+        shortTitle: 'Checks',
+        description: 'Drops anything without a stop, a target or a clear side.',
         icon: 'target'
       },
       {
         id: 'risk',
         step: '3',
-        title: 'Risk Controls',
-        shortTitle: 'Risk Controls',
-        description: 'Applies sizing, exposure, and drawdown rules.',
+        title: 'Zeno Guard',
+        shortTitle: 'Guard',
+        description: 'Enforces daily loss, drawdown and per-trade risk limits.',
         icon: 'shield'
       },
       {
@@ -128,7 +128,7 @@ export function createLandingContent(): SiteContent {
         step: '4',
         title: 'Execution Layer',
         shortTitle: 'Execution',
-        description: 'Routes orders across integrated platforms.',
+        description: 'Places and manages orders on your own MT5 accounts.',
         icon: 'bolt'
       }
     ],
@@ -176,9 +176,9 @@ export function createLandingContent(): SiteContent {
         {
           title: 'Products',
           links: [
-            { label: 'Trader Signals', href: '#products' },
-            { label: 'Scoring Engine', href: '#products' },
-            { label: 'Risk Controls', href: '#products' },
+            { label: 'Signal Intake', href: '#products' },
+            { label: 'Signal Checks', href: '#products' },
+            { label: 'Zeno Guard', href: '#products' },
             { label: 'Execution Layer', href: '#products' }
           ]
         },

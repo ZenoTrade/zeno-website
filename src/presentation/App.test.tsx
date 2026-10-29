@@ -32,7 +32,7 @@ describe('App', () => {
     expect(screen.getAllByRole('link', { name: /Request Access/ })[0]).toHaveAttribute('href', '#contact');
 
     expect(
-      screen.getByText('Signals, scoring, risk, and execution - standalone or fully connected.')
+      screen.getByText('Prop-firm rule enforcement and signal copying for MetaTrader 5 - standalone or connected.')
     ).toBeInTheDocument();
     expect(screen.getByLabelText('Modular Zeno product architecture')).toBeInTheDocument();
     expect(screen.getByText('Use independently')).toBeInTheDocument();
@@ -45,9 +45,9 @@ describe('App', () => {
     expect(localStorageMock.getItem('zeno-theme')).toBe('dark');
     expect(screen.getByRole('button', { name: 'Switch to light mode' })).toBeInTheDocument();
 
-    expect(screen.getAllByText('Trader Signals').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Scoring Engine').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Risk Controls').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Signal Intake').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Signal Checks').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Zeno Guard').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Execution Layer').length).toBeGreaterThan(0);
     expect(screen.queryByText('Standalone or integrated')).not.toBeInTheDocument();
 

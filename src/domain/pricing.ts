@@ -1,7 +1,7 @@
 export type BillingPeriod = 'monthly' | 'yearly';
 
 export interface PricingPlan {
-  family: 'copier' | 'signals' | 'bundle' | 'riskguard';
+  family: 'prop' | 'copier' | 'signals' | 'bundle' | 'riskguard';
   name: string;
   tagline: string;
   features: string[];
@@ -13,13 +13,44 @@ export interface PricingPlan {
 // Mirrors zeno-platform/license_server/zeno_license/plans.py.
 export const pricingPlans: PricingPlan[] = [
   {
+    family: 'prop',
+    name: 'Guard + Copier',
+    tagline: 'For prop traders: pass the challenge, keep the account.',
+    features: [
+      'Everything in Zeno Guard and Zeno Copier',
+      'Copy one master account to your prop accounts',
+      'Guard on every account, each with its own limits',
+      'Up to 3 MT5 accounts'
+    ],
+    prices: {
+      monthly: { planId: 'prop-monthly', usd: 59 },
+      yearly: { planId: 'prop-yearly', usd: 490 }
+    },
+    featured: true
+  },
+  {
+    family: 'riskguard',
+    name: 'Zeno Guard',
+    tagline: 'Hard limits for prop-firm rules.',
+    features: [
+      'Closes everything before the daily loss or max drawdown limit',
+      'Blocks trades whose stop could break a rule',
+      'Static or trailing drawdown, your firm\'s reset time',
+      'Works with manual trading and with the Copier'
+    ],
+    prices: {
+      monthly: { planId: 'riskguard-monthly', usd: 29 },
+      yearly: { planId: 'riskguard-yearly', usd: 249 }
+    }
+  },
+  {
     family: 'copier',
     name: 'Zeno Copier',
     tagline: 'Execute any signal channel on your own MT5.',
     features: [
       'Runs on your PC or VPS, next to your MT5',
+      'Reads free-form signals, not only one format',
       'Per-target risk split and auto break-even',
-      'Your risk per trade, your rules',
       '1 MT5 account per license'
     ],
     prices: {
@@ -40,8 +71,7 @@ export const pricingPlans: PricingPlan[] = [
     prices: {
       monthly: { planId: 'bundle-monthly', usd: 99 },
       yearly: { planId: 'bundle-yearly', usd: 899 }
-    },
-    featured: true
+    }
   },
   {
     family: 'signals',
@@ -56,17 +86,6 @@ export const pricingPlans: PricingPlan[] = [
       monthly: { planId: 'signals-monthly', usd: 79 },
       yearly: { planId: 'signals-yearly', usd: 690 }
     }
-  },
-  {
-    family: 'riskguard',
-    name: 'Zeno Risk Guard',
-    tagline: 'Hard limits for prop-firm challenges.',
-    features: ['Daily loss and max exposure limits', 'Auto break-even', 'Works with any EA or manual trading'],
-    prices: {
-      monthly: { planId: 'riskguard-monthly', usd: 29 },
-      yearly: { planId: 'riskguard-yearly', usd: 249 }
-    },
-    comingSoon: true
   }
 ];
 

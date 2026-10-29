@@ -8,13 +8,13 @@ describe('createLandingContent', () => {
     expect(content.nav).toHaveLength(7);
     expect(content.hero.title).toBe('Reliable Quant Infrastructure.');
     expect(content.hero.subline).toBe(
-      'Signals, scoring, risk, and execution - standalone or fully connected.'
+      'Prop-firm rule enforcement and signal copying for MetaTrader 5 - standalone or connected.'
     );
     expect(content.productModules).toHaveLength(4);
     expect(content.productModules[0]).toMatchObject({
       id: 'signals',
       step: '1',
-      title: 'Trader Signals'
+      title: 'Signal Intake'
     });
     expect(content.reliability.metrics).toHaveLength(3);
     // Unverified performance figures stay off the site until the public track record backs them.
