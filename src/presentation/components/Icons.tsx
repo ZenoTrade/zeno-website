@@ -1,4 +1,5 @@
-import type { IconName, SocialLink } from '../../domain/siteContent';
+import type { ReactNode } from 'react';
+import type { IconName } from '../../domain/siteContent';
 
 export function BrandMark() {
   return (
@@ -15,95 +16,80 @@ export function BrandMark() {
   );
 }
 
-export function Icon({ name }: { name: IconName }) {
-  if (name === 'network') {
-    return (
-      <svg className="symbol" viewBox="0 0 48 48" aria-hidden="true">
-        <circle cx="24" cy="13" r="5" />
-        <circle cx="13" cy="32" r="5" />
-        <circle cx="35" cy="32" r="5" />
-        <path d="M21 17l-6 10M27 17l6 10M18 32h12" />
-      </svg>
-    );
-  }
+const paths: Record<IconName, ReactNode> = {
+  shield: (
+    <>
+      <path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3z" />
+      <path d="M9 12l2 2 4-4" />
+    </>
+  ),
+  copy: (
+    <>
+      <rect x="8" y="8" width="12" height="12" rx="2.5" />
+      <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+    </>
+  ),
+  telegram: <path d="M21 4L3 11l6 2.2M21 4l-3 16-9-6.8M21 4L9 13.2V19l3-3.4" />,
+  bolt: <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />,
+  lock: (
+    <>
+      <rect x="5" y="11" width="14" height="10" rx="2.5" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+    </>
+  ),
+  coin: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9.5 8.5h4a2 2 0 0 1 0 4h-4m0 0h4.5a2 2 0 0 1 0 4H9.5m0-8v8M11 7v1.5M11 16.5V18" />
+    </>
+  ),
+  chart: (
+    <>
+      <path d="M4 20h16" />
+      <path d="M5 15l4-4 3 3 7-7" />
+      <path d="M15 7h4v4" />
+    </>
+  ),
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </>
+  ),
+  home: (
+    <>
+      <path d="M4 11l8-7 8 7" />
+      <path d="M6 9.5V20h12V9.5" />
+    </>
+  ),
+  grid: (
+    <>
+      <rect x="4" y="4" width="7" height="7" rx="1.5" />
+      <rect x="13" y="4" width="7" height="7" rx="1.5" />
+      <rect x="4" y="13" width="7" height="7" rx="1.5" />
+      <rect x="13" y="13" width="7" height="7" rx="1.5" />
+    </>
+  ),
+  tag: (
+    <>
+      <path d="M3 12V4h8l10 10-8 8L3 12z" />
+      <circle cx="7.5" cy="8" r="1.5" />
+    </>
+  ),
+  help: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01" />
+    </>
+  ),
+  check: <path d="M5 12.5l4.5 4.5L19 7.5" />,
+  arrow: <path d="M5 12h14M13 6l6 6-6 6" />
+};
 
-  if (name === 'target') {
-    return (
-      <svg className="symbol" viewBox="0 0 48 48" aria-hidden="true">
-        <circle cx="24" cy="24" r="15" />
-        <circle cx="24" cy="24" r="6" />
-        <path d="M24 4v8M24 36v8M4 24h8M36 24h8" />
-      </svg>
-    );
-  }
-
-  if (name === 'shield') {
-    return (
-      <svg className="symbol" viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M24 6l15 6v11c0 10-6 16-15 19C15 39 9 33 9 23V12l15-6z" />
-        <path d="M18 24l4 4 8-9" />
-      </svg>
-    );
-  }
-
-  if (name === 'bolt') {
-    return (
-      <svg className="symbol" viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M28 4L12 27h12l-4 17 16-24H24l4-16z" />
-      </svg>
-    );
-  }
-
-  if (name === 'blocks') {
-    return (
-      <svg className="symbol" viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M24 6l10 6-10 6-10-6 10-6z" />
-        <path d="M14 18l10 6v12l-10-6V18z" />
-        <path d="M34 18l-10 6v12l10-6V18z" />
-      </svg>
-    );
-  }
-
-  if (name === 'chart') {
-    return (
-      <svg className="symbol" viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M9 38h30" />
-        <path d="M15 33V23" />
-        <path d="M24 33V14" />
-        <path d="M33 33v-7" />
-        <path d="M13 19l8-5 6 4 8-7" />
-      </svg>
-    );
-  }
-
+export function Icon({ name, className = 'icon' }: { name: IconName; className?: string }) {
   return (
-    <svg className="symbol" viewBox="0 0 48 48" aria-hidden="true">
-      <circle cx="24" cy="24" r="15" />
-      <path d="M24 14v10l6 6" />
-    </svg>
-  );
-}
-
-export function SocialIcon({ name }: { name: SocialLink['label'] }) {
-  if (name === 'LinkedIn') {
-    return (
-      <svg className="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M6.6 8.2v9.2M6.6 5.8h.1M10.4 17.4V8.2M10.4 11.2c.8-2.2 4.2-2.6 5.3-.3.3.7.4 1.5.4 2.3v4.2" />
-      </svg>
-    );
-  }
-
-  if (name === 'X') {
-    return (
-      <svg className="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M6 5l12 14M18 5L6 19" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg className="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M9.4 19c-4.2 1.2-4.2-2.4-5.9-3M15.3 21v-3.1c0-1 .1-1.7-.4-2.2 2.8-.3 5.8-1.4 5.8-6.2 0-1.4-.5-2.5-1.3-3.4.1-.3.6-1.7-.1-3.5 0 0-1.1-.3-3.6 1.3a12.6 12.6 0 0 0-6.4 0C6.8 2.3 5.7 2.6 5.7 2.6c-.7 1.8-.2 3.2-.1 3.5-.8.9-1.3 2-1.3 3.4 0 4.8 3 5.9 5.8 6.2-.5.5-.9 1.2-.9 2.4V21" />
+    <svg className={className} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      {paths[name]}
     </svg>
   );
 }
@@ -111,16 +97,30 @@ export function SocialIcon({ name }: { name: SocialLink['label'] }) {
 export function ThemeToggleIcon({ theme }: { theme: 'light' | 'dark' }) {
   if (theme === 'dark') {
     return (
-      <svg className="theme-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <svg className="icon" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M18 14.5A6.5 6.5 0 1 1 9.5 6a5.6 5.6 0 0 0 8.5 8.5z" />
       </svg>
     );
   }
 
   return (
-    <svg className="theme-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <svg className="icon" viewBox="0 0 24 24" aria-hidden="true">
       <circle cx="12" cy="12" r="4.2" />
       <path d="M12 2.5v2.4M12 19.1v2.4M21.5 12h-2.4M4.9 12H2.5M18.7 5.3l-1.7 1.7M7 17l-1.7 1.7M18.7 18.7L17 17M7 7 5.3 5.3" />
     </svg>
+  );
+}
+
+export function ThemeToggle({ theme, next, onToggle }: { theme: 'light' | 'dark'; next: string; onToggle: () => void }) {
+  return (
+    <button
+      type="button"
+      className="icon-button"
+      aria-label={`Switch to ${next} mode`}
+      aria-pressed={theme === 'dark'}
+      onClick={onToggle}
+    >
+      <ThemeToggleIcon theme={theme} />
+    </button>
   );
 }

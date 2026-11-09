@@ -1,37 +1,49 @@
-export type IconName = 'network' | 'target' | 'shield' | 'bolt' | 'blocks' | 'chart' | 'clock';
+export type IconName =
+  | 'shield'
+  | 'copy'
+  | 'telegram'
+  | 'bolt'
+  | 'lock'
+  | 'coin'
+  | 'chart'
+  | 'clock'
+  | 'home'
+  | 'grid'
+  | 'tag'
+  | 'help'
+  | 'check'
+  | 'arrow';
 
 export interface NavLink {
   label: string;
   href: string;
+  icon: IconName;
 }
 
-export interface HeroContent {
-  eyebrow: string;
-  title: string;
-  subline: string;
-  primaryAction: string;
-  secondaryAction: string;
+export interface Product {
+  id: 'guard' | 'copier';
+  name: string;
+  kicker: string;
+  summary: string;
+  points: string[];
+  icon: IconName;
 }
 
-export interface ProductModule {
-  id: string;
-  step: string;
+export interface Step {
   title: string;
-  shortTitle: string;
   description: string;
-  icon: Extract<IconName, 'network' | 'target' | 'shield' | 'bolt'>;
+  icon: IconName;
 }
 
-export interface ReliabilityMetric {
+export interface TrustPoint {
   label: string;
-  value: string;
-  icon: Extract<IconName, 'chart' | 'shield' | 'clock'>;
+  detail: string;
+  icon: IconName;
 }
 
-export interface WhyPillar {
-  title: string;
-  description: string;
-  icon: Extract<IconName, 'target' | 'blocks' | 'shield'>;
+export interface FaqItem {
+  question: string;
+  answer: string;
 }
 
 export interface FooterLink {
@@ -39,32 +51,29 @@ export interface FooterLink {
   href: string;
 }
 
-export interface FooterGroup {
-  title: string;
-  links: FooterLink[];
-}
-
-export interface SocialLink {
-  label: 'LinkedIn' | 'X' | 'GitHub';
-  href: string;
-}
-
 export interface SiteContent {
   companyName: string;
+  contactEmail: string;
   nav: NavLink[];
-  hero: HeroContent;
-  productModules: ProductModule[];
-  reliability: {
+  hero: {
+    eyebrow: string;
+    title: string;
+    mobileTitle: string;
+    subline: string;
+    mobileSubline: string;
+    primaryAction: string;
+    secondaryAction: string;
+  };
+  trust: TrustPoint[];
+  products: Product[];
+  steps: Step[];
+  proof: {
     eyebrow: string;
     title: string;
     description: string;
     trackRecordNote: string;
-    metrics: ReliabilityMetric[];
   };
-  why: {
-    eyebrow: string;
-    pillars: WhyPillar[];
-  };
+  faq: FaqItem[];
   cta: {
     title: string;
     description: string;
@@ -73,8 +82,7 @@ export interface SiteContent {
   footer: {
     tagline: string;
     copyright: string;
-    groups: FooterGroup[];
-    socials: SocialLink[];
+    product: FooterLink[];
     policies: FooterLink[];
   };
 }
@@ -82,149 +90,129 @@ export interface SiteContent {
 export function createLandingContent(): SiteContent {
   return {
     companyName: 'Zeno',
+    contactEmail: 'hello@zenotrade.com',
     nav: [
-      { label: 'Products', href: '#products' },
-      { label: 'Process', href: '#process' },
-      { label: 'Pricing', href: '#pricing' },
-      { label: 'Reliability', href: '#reliability' },
-      { label: 'Gold outlook', href: '#gold-outlook' },
-      { label: 'Technology', href: '#technology' },
-      { label: 'Contact', href: '#contact' }
+      { label: 'Home', href: '#top', icon: 'home' },
+      { label: 'Products', href: '#products', icon: 'grid' },
+      { label: 'How it works', href: '#how', icon: 'bolt' },
+      { label: 'Pricing', href: '#pricing', icon: 'tag' },
+      { label: 'FAQ', href: '#faq', icon: 'help' }
     ],
     hero: {
-      eyebrow: 'Trader-originated. Disciplined. Reliable.',
-      title: 'Reliable Quant Infrastructure.',
-      subline: 'Prop-firm rule enforcement and signal copying for MetaTrader 5 - standalone or connected.',
-      primaryAction: 'Explore Products',
-      secondaryAction: 'Request Access'
+      eyebrow: 'For prop-firm traders on MetaTrader 5',
+      title: 'Pass the challenge. Keep the account.',
+      mobileTitle: 'Trade your plan. Keep your account.',
+      subline:
+        'Zeno Guard stops the trade that would break your firm\'s rules before it reaches the market. Zeno Copier runs the Telegram signals you already follow on your own MT5, inside those limits.',
+      mobileSubline: 'Hard prop-firm limits and Telegram signal copying for your own MT5.',
+      primaryAction: 'See plans',
+      secondaryAction: 'How it works'
     },
-    productModules: [
+    trust: [
+      { label: 'No KYC', detail: 'No ID, no card, no account', icon: 'lock' },
+      { label: 'Crypto checkout', detail: 'BTC, Lightning, USDT, XMR', icon: 'coin' },
+      { label: 'Runs on your PC', detail: 'Your broker login stays local', icon: 'shield' },
+      { label: 'Key in minutes', detail: 'By Telegram or email', icon: 'clock' }
+    ],
+    products: [
       {
-        id: 'signals',
-        step: '1',
-        title: 'Signal Intake',
-        shortTitle: 'Signals',
-        description: 'Reads the Telegram channels you follow, in any format.',
-        icon: 'network'
-      },
-      {
-        id: 'scoring',
-        step: '2',
-        title: 'Signal Checks',
-        shortTitle: 'Checks',
-        description: 'Drops anything without a stop, a target or a clear side.',
-        icon: 'target'
-      },
-      {
-        id: 'risk',
-        step: '3',
-        title: 'Zeno Guard',
-        shortTitle: 'Guard',
-        description: 'Enforces daily loss, drawdown and per-trade risk limits.',
+        id: 'guard',
+        name: 'Zeno Guard',
+        kicker: 'Rule enforcement',
+        summary: 'Your firm\'s limits, enforced on every order.',
+        points: [
+          'Closes everything before the daily loss or max drawdown limit',
+          'Blocks a trade whose stop could break a rule, and tells you the size that fits',
+          'Static or trailing drawdown, with your firm\'s reset time',
+          'Works with manual trading and with the Copier'
+        ],
         icon: 'shield'
       },
       {
-        id: 'execution',
-        step: '4',
-        title: 'Execution Layer',
-        shortTitle: 'Execution',
-        description: 'Places and manages orders on your own MT5 accounts.',
-        icon: 'bolt'
+        id: 'copier',
+        name: 'Zeno Copier',
+        kicker: 'Signal copying',
+        summary: 'The Telegram channels you follow, executed on your MT5.',
+        points: [
+          'Reads free-form signals, not only one format',
+          'Drops signals without a stop, a target or a clear side',
+          'Per-target risk split and automatic break-even',
+          'Copies one master account to your prop accounts'
+        ],
+        icon: 'copy'
       }
     ],
-    reliability: {
+    steps: [
+      {
+        title: 'Pay in crypto',
+        description: 'Pick a plan and pay from any wallet. Your license key arrives by Telegram or email.',
+        icon: 'coin'
+      },
+      {
+        title: 'Connect MT5',
+        description: 'Install Zeno next to MetaTrader 5 on your PC or VPS and enter your firm\'s rules.',
+        icon: 'bolt'
+      },
+      {
+        title: 'Trade inside the lines',
+        description: 'Copy your channels or trade by hand. Guard checks every order first.',
+        icon: 'shield'
+      }
+    ],
+    proof: {
       eyebrow: 'Reliability you can verify',
       title: 'Measured in public.',
-      description: 'Every signal and its result is logged with a timestamp. No performance numbers until they can be checked.',
+      description:
+        'Every signal and its result is logged with a timestamp. We publish no performance numbers until they can be checked.',
       trackRecordNote:
-        'The public track record opens once 30 days of trades are logged. Results will be published trade by trade, wins and losses alike.',
-      metrics: [
-        { label: 'Signals published with results', value: 'Every one', icon: 'chart' },
-        { label: 'Risk limits per account', value: 'Your rules', icon: 'shield' },
-        { label: 'Track record access', value: 'Public', icon: 'clock' }
-      ]
+        'The public track record opens once 30 days of trades are logged. Results will be published trade by trade, wins and losses alike.'
     },
-    why: {
-      eyebrow: 'Why Zeno',
-      pillars: [
-        {
-          title: 'Disciplined Process',
-          description: 'Systematic, repeatable, risk-aware.',
-          icon: 'target'
-        },
-        {
-          title: 'Modular Design',
-          description: 'Use modules independently or connect the full stack.',
-          icon: 'blocks'
-        },
-        {
-          title: 'Internal Validation',
-          description: 'Rigorously tested. Continuously improved.',
-          icon: 'shield'
-        }
-      ]
-    },
+    faq: [
+      {
+        question: 'Do I need to verify my identity?',
+        answer:
+          'No. You pay with crypto through our own BTCPay Server. We never ask for ID, a card or a customer account. An email or a Telegram chat is enough to receive your key.'
+      },
+      {
+        question: 'Which platforms does Zeno work with?',
+        answer:
+          'MetaTrader 5 on Windows, on your own PC or a VPS. Zeno runs next to your terminal, so it works with any broker or prop firm that gives you an MT5 account.'
+      },
+      {
+        question: 'Does Zeno hold my funds or my broker password?',
+        answer:
+          'Never. Zeno runs on your machine. Your MT5 login is stored encrypted on that machine only, and your money stays with your broker.'
+      },
+      {
+        question: 'Which prop-firm rules can Guard enforce?',
+        answer:
+          'Daily loss, maximum drawdown (static or trailing) and risk per trade, with your firm\'s own reset time. You enter the numbers from your firm\'s rulebook.'
+      },
+      {
+        question: 'Can I try it first?',
+        answer:
+          'Yes. Send /trial to the Zeno bot on Telegram for 7 free days of Guard and Copier. If the software cannot run on your setup, ask for a refund within 7 days of purchase.'
+      },
+      {
+        question: 'Is this financial advice?',
+        answer:
+          'No. Zeno sells software and general trading information. You decide what runs on your account, and trading leveraged products can lose you money.'
+      }
+    ],
     cta: {
-      title: 'Build with Zeno.',
-      description: 'Reliable quant infrastructure. Standalone or fully connected.',
-      primaryAction: 'Request Access'
+      title: 'Your next challenge, with a safety net.',
+      description: 'Start with a free week, or pay in crypto and get your key in minutes.',
+      primaryAction: 'Choose a plan'
     },
     footer: {
-      tagline: 'Quant infrastructure for disciplined execution.',
+      tagline: 'Software for disciplined prop-firm trading.',
       copyright: 'Copyright 2026 Zeno Trading. All rights reserved.',
-      groups: [
-        {
-          title: 'Products',
-          links: [
-            { label: 'Signal Intake', href: '#products' },
-            { label: 'Signal Checks', href: '#products' },
-            { label: 'Zeno Guard', href: '#products' },
-            { label: 'Execution Layer', href: '#products' }
-          ]
-        },
-        {
-          title: 'Process',
-          links: [
-            { label: 'How It Works', href: '#process' },
-            { label: 'Our Approach', href: '#process' }
-          ]
-        },
-        {
-          title: 'Reliability',
-          links: [
-            { label: 'Track Record', href: '#reliability' },
-            { label: 'System Uptime', href: '#reliability' },
-            { label: 'Risk Management', href: '#reliability' }
-          ]
-        },
-        {
-          title: 'Technology',
-          links: [
-            { label: 'Architecture', href: '#technology' },
-            { label: 'Security', href: '#technology' },
-            { label: 'Data & Infrastructure', href: '#technology' }
-          ]
-        },
-        {
-          title: 'Company',
-          links: [
-            { label: 'About Us', href: '#top' },
-            { label: 'Careers', href: '#top' },
-            { label: 'News', href: '#top' }
-          ]
-        },
-        {
-          title: 'Contact',
-          links: [
-            { label: 'Get In Touch', href: '#contact' },
-            { label: 'Partnerships', href: '#contact' }
-          ]
-        }
-      ],
-      socials: [
-        { label: 'LinkedIn', href: '#' },
-        { label: 'X', href: '#' },
-        { label: 'GitHub', href: '#' }
+      product: [
+        { label: 'Zeno Guard', href: '#products' },
+        { label: 'Zeno Copier', href: '#products' },
+        { label: 'Pricing', href: '#pricing' },
+        { label: 'Track record', href: '#proof' },
+        { label: 'Gold outlook', href: '#gold-outlook' }
       ],
       policies: [
         { label: 'Privacy Policy', href: '#privacy' },

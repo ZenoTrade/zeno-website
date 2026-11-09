@@ -1,28 +1,23 @@
 import { createLandingContent } from './siteContent';
 
 describe('createLandingContent', () => {
-  it('defines the redesigned homepage content structure', () => {
+  it('leads with Guard and Copier for prop traders', () => {
     const content = createLandingContent();
 
     expect(content.companyName).toBe('Zeno');
-    expect(content.nav).toHaveLength(7);
-    expect(content.hero.title).toBe('Reliable Quant Infrastructure.');
-    expect(content.hero.subline).toBe(
-      'Prop-firm rule enforcement and signal copying for MetaTrader 5 - standalone or connected.'
-    );
-    expect(content.productModules).toHaveLength(4);
-    expect(content.productModules[0]).toMatchObject({
-      id: 'signals',
-      step: '1',
-      title: 'Signal Intake'
-    });
-    expect(content.reliability.metrics).toHaveLength(3);
-    // Unverified performance figures stay off the site until the public track record backs them.
-    expect(JSON.stringify(content.reliability)).not.toMatch(/sharpe|drawdown|uptime|\d+(\.\d+)?%/i);
-    expect(content.why.pillars).toHaveLength(3);
-    expect(content.cta.title).toBe('Build with Zeno.');
-    expect(content.footer.groups).toHaveLength(6);
-    expect(content.footer.socials.map((item) => item.label)).toEqual(['LinkedIn', 'X', 'GitHub']);
+    expect(content.hero.title).toBe('Pass the challenge. Keep the account.');
+    expect(content.products.map((p) => p.name)).toEqual(['Zeno Guard', 'Zeno Copier']);
+    expect(content.steps).toHaveLength(3);
+    expect(content.trust.map((t) => t.label)).toContain('No KYC');
+    // Mobile tab bar uses four of these; each needs an icon.
+    expect(content.nav.every((item) => item.icon && item.href.startsWith('#'))).toBe(true);
+    expect(content.faq.length).toBeGreaterThanOrEqual(5);
+  });
+
+  it('keeps unverified performance figures off the site', () => {
+    const content = createLandingContent();
+    const text = JSON.stringify(content);
+    expect(text).not.toMatch(/sharpe|win rate|\d+(\.\d+)?%/i);
     expect(content.footer.policies.map((item) => item.label)).toEqual([
       'Privacy Policy',
       'Terms of Service',

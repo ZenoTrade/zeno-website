@@ -16,7 +16,7 @@ async function loadOutlook(urls: string[]): Promise<Outlook | null> {
   return null;
 }
 
-export function GoldOutlook({ initial = null }: { initial?: Outlook | null }) {
+export function GoldOutlook({ initial = null, compact = false }: { initial?: Outlook | null; compact?: boolean }) {
   const [outlook, setOutlook] = useState<Outlook | null>(initial);
 
   useEffect(() => {
@@ -32,9 +32,38 @@ export function GoldOutlook({ initial = null }: { initial?: Outlook | null }) {
 
   if (!outlook) return null;
   const g = fanGeometry(outlook);
+  const table = (
+        <table className="outlook__table">
+          <caption className="sr-only">Outlook ranges by month</caption>
+          <thead>
+            <tr>
+              <th scope="col">Month (average)</th>
+              <th scope="col">80% range</th>
+              <th scope="col">95% range</th>
+            </tr>
+          </thead>
+          <tbody>
+            {outlook.horizons.map((h) => (
+              <tr key={h.h}>
+                <th scope="row">{h.target_month}</th>
+                <td>
+                  {usd(h.p10)} – {usd(h.p90)}
+                </td>
+                <td>
+                  {usd(h.p2_5)} – {usd(h.p97_5)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+  );
 
   return (
-    <section id="gold-outlook" className="outlook" aria-labelledby="outlook-title">
+    <section
+      id="gold-outlook"
+      className={`outlook ${compact ? 'm-section outlook--compact' : 'd-section'}`}
+      aria-labelledby="outlook-title"
+    >
       <p className="eyebrow">Free research</p>
       <h2 id="outlook-title">{outlook.title}</h2>
       <p className="outlook__label">{outlook.label}</p>
@@ -78,29 +107,14 @@ export function GoldOutlook({ initial = null }: { initial?: Outlook | null }) {
         </figcaption>
       </figure>
 
-      <table className="outlook__table">
-        <caption className="sr-only">Outlook ranges by month</caption>
-        <thead>
-          <tr>
-            <th scope="col">Month (average)</th>
-            <th scope="col">80% range</th>
-            <th scope="col">95% range</th>
-          </tr>
-        </thead>
-        <tbody>
-          {outlook.horizons.map((h) => (
-            <tr key={h.h}>
-              <th scope="row">{h.target_month}</th>
-              <td>
-                {usd(h.p10)} – {usd(h.p90)}
-              </td>
-              <td>
-                {usd(h.p2_5)} – {usd(h.p97_5)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {compact ? (
+        <details className="accordion">
+          <summary>Monthly ranges</summary>
+          {table}
+        </details>
+      ) : (
+        table
+      )}
       <p className="outlook__meta">
         Target: {outlook.target}. Data as of {outlook.data_fetched_at_utc.slice(0, 10)}; refreshed monthly.
       </p>
