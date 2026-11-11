@@ -1,0 +1,28 @@
+name: Bug report
+description: Something does not work as expected
+labels: ["type:bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Steps to reproduce, what you expected, what you saw.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Remove keys, passwords and personal data first.
+      render: text
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options: ["P0 - money or data at risk", "P1 - feature broken", "P2 - workaround exists", "P3 - cosmetic"]
+    validations:
+      required: true

@@ -1,0 +1,32 @@
+# Weekly dependency audit. Reports advisories without blocking day-to-day pushes.
+name: dependency-audit
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Python dependencies
+        run: |
+          pip install pip-audit
+          status=0
+          for f in $(git ls-files | grep -E '(^|/)requirements\.txt$'); do
+            echo "== $f"
+            grep -v '^MetaTrader5' "$f" > /tmp/req.txt   # Windows-only wheel
+            pip-audit -r /tmp/req.txt || status=1
+          done
+          exit $status
+      - name: Node dependencies
+        if: hashFiles('package-lock.json') != ''
+        run: npm audit --omit=dev --audit-level=high

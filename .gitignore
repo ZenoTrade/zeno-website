@@ -4,3 +4,6 @@ dist
 .vite
 
 tsconfig.app.tsbuildinfo
+
+# Claude Code local settings
+.claude/settings.local.json
